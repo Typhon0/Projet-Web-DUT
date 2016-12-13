@@ -6,15 +6,6 @@ CREATE TABLE Categorie (
   ordre int(11) NOT NULL UNIQUE
 );
 
- CREATE TABLE Membre (
-  idMembre int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  pseudo varchar(30) collate latin1_general_ci NOT NULL,
-  mdp varchar(32) collate latin1_general_ci NOT NULL,
-  email varchar(250) collate latin1_general_ci NOT NULL,
-  description text collate latin1_general_ci NOT NULL,
-  avatar varchar(100) collate latin1_general_ci NOT NULL
-); 
-
 CREATE TABLE Section (
   idSection int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   idCategorie int(11) NOT NULL,
@@ -30,7 +21,7 @@ CREATE TABLE Topic (
   FOREIGN KEY (idSection) REFERENCES Section(idSection) ON DELETE CASCADE,
   titre char(60) collate latin1_general_ci NOT NULL,
   idCreateur int(11) NOT NULL,
-  FOREIGN KEY(idCreateur) REFERENCES Membre(idMembre) ON DELETE CASCADE,
+  FOREIGN KEY(idCreateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
   nbVisites mediumint(8) NOT NULL,
   idLastPost int(11) NOT NULL UNIQUE,
   idFirstPost int(11) NOT NULL UNIQUE
@@ -39,7 +30,7 @@ CREATE TABLE Topic (
 CREATE TABLE Post (
   idPost int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   idCreateur int(11) NOT NULL,
-  FOREIGN KEY (idCreateur) REFERENCES Membre(idMembre) ON DELETE CASCADE,
+  FOREIGN KEY (idCreateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
   contenu text collate latin1_general_ci NOT NULL,
   dateHeure timestamp NOT NULL,
   idTopic int(11) NOT NULL,
@@ -51,9 +42,9 @@ CREATE TABLE Post (
 CREATE TABLE MessagePrive (
   idMessage int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   expediteur int(11) NOT NULL,
-  FOREIGN KEY (expediteur) REFERENCES Membre(idMembre) ON DELETE CASCADE,
+  FOREIGN KEY (expediteur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
   destinataire int(11) NOT NULL,
-  FOREIGN KEY (destinataire) REFERENCES Membre(idMembre) ON DELETE CASCADE,
+  FOREIGN KEY (destinataire) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
   titre varchar(100) collate latin1_general_ci NOT NULL,
   contenu text collate latin1_general_ci NOT NULL,
   dateHeure timestamp NOT NULL

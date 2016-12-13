@@ -10,9 +10,11 @@ CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
     login varchar(32),
     email varchar(32) NOT NULL UNIQUE,
-	dateNaiss date NOT NULL,
     mdp varchar(12) NOT NULL,
-    type text NOT NULL,
+	description text NOT NULL,
+	dateNaiss date NOT NULL,
+    type varchar(32) NOT NULL,
+	avatar varchar(100) collate latin1_general_ci NOT NULL
 	numAgenda int NOT NULL,
     FOREIGN KEY(numAgenda) REFERENCES Agenda(numAgenda) ON DELETE CASCADE
 );
