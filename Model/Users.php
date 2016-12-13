@@ -3,40 +3,44 @@
 class Users
 {
 	public $pseudo ;
-	public $nom ;
-	public $prenom ;
-	public $age ;
-	public $adresse ;
-	public $CP ;
-	public $ville ;
 	public $email ;
-	public $telephone ;
+	public $mdp ;
+	public $desc ;
+	public $date_de_naissance ;
+	public $type ;
+
 	
-	public function __construct($new_pseudo,$new_nom,$new_prenom,$new_age,$new_adresse,$new_CP,$new_ville,$new_email,$new_telephone)
+	public function __construct($new_pseudo,$new_email,$new_mdp,$new_desc,$new_ddn,$new_type)
 	{
-		$this->pseudo = $new_pseudo ;
-		$this->nom = $new_nom ;
-		$this->prenom = $new_prenom ;
-		$this->age = $new_age ;
-		$this->adresse = $new_adresse ;
-		$this->CP = $new_CP ;
-		$this->ville =$new_ville ;
+		$this->pseudo = $new_pseudo ;		
 		$this->email =$new_email ;
-		$this->telephone = $new_telephone;
+		$this->mdp = $new_mdp ;
+		$this->desc = $new_desc ;
+		$this->date_de_naissance = $new_ddn ;
+		$this->type = $new_type ;
 	}
 	
 	public function add_user(Users $users)
 	{
 		include('config.php');
 		//preparation de la requête pour ajouter
-		$req = $bdd->prepare('INSERT INTO users(pseudo,nom,prenom,age,adresse,CP,ville,email,telephone) VALUES (:pseudo, :nom, :prenom, :age, :adresse, :CP, :ville,:email,:telephone)');
-		
+		$req = $bdd->prepare('INSERT INTO Utilisateur(login,email,mdp,description,dateNaiss,type,numAgenda) VALUES (:pseudo, :email, :mdp, :description, :ddn, :type, :numAgenda)');
+
+		// test de présence du login ou de l'email dans la bdd
 		$error = $users->find_user($users);
 		if(!empty($error))
 			return $error ;
 		// tentative d'ajout dans la base de données avec les arguments
-		if($req->execute(array('pseudo' => $users->pseudo, 'nom' => $users->nom,'prenom' => $users->prenom,'age' => $users->age,'adresse' => $users->adresse,'CP' => $users->CP,
-		'ville' => $users->ville,'email' => $users->email,'telephone' => $users->telephone)))
+		if($req->execute(array('login' => $users->pseudo,
+							'email' => $users->email,
+							'mdp' => $users->mdp,
+							'description' => $users->description,
+							'dateNaiss' => $users->ddn,
+							'type' => $users->type,
+							'numAgenda' => $num_ag
+							)
+						)
+			)
 			return 'true' ;
 		else
 			return 'false' ;
