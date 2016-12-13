@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS Ordonnance, Utilisateur, Agenda, Service, UtilisateurServic
 
 CREATE TABLE Agenda (
    	numAgenda int AUTO_INCREMENT PRIMARY KEY,
-    date date NOT NULL,
-    contenu text NOT NULL
+    date date,
+    contenu text
 );
 
 CREATE TABLE Utilisateur (
