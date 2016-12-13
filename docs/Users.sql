@@ -10,6 +10,7 @@ CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
     login varchar(32),
     email varchar(32) NOT NULL UNIQUE,
+	dateNaiss date NOT NULL,
     mdp varchar(12) NOT NULL,
     type text NOT NULL,
 	numAgenda int NOT NULL,
