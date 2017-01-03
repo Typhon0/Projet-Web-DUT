@@ -51,9 +51,18 @@ CREATE TABLE Annonce (
 	idAnnonce int AUTO_INCREMENT PRIMARY KEY,
 	demandeur int NOT NULL,
 	FOREIGN KEY(demandeur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
-	catService int NOT NULL,
-	FOREIGN KEY(catService) REFERENCES Service(idService) ON DELETE CASCADE,
 	lieu varchar(255) NOT NULL,
-	prix int NOT NULL,
-	message text NOT NULL
+	prix int NOT NULL
+);
+
+Create Table Message (
+	idMessage int AUTO_INCREMENT PRIMARY KEY,
+	destinataire varchar(128) NOT NULL,
+	emetteur varchar(128) NOT NULL,
+	contenu text NOT NULL,	
+	objet varchar(128) NOT NULL,
+	lu boolean NOT NULL,	
+	date_envoi timestamp NOT NULL,
+	Foreign key(destinataire) references Utilisateur(login) on delete cascade,
+	Foreign key(emetteur) references Utilisateur(login) on delete cascade
 );
