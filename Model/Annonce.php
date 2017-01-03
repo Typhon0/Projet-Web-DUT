@@ -1,5 +1,24 @@
 <?php
 
+class Annonce {
+	
+	public $idAnnonce;
+	public $demandeur;
+	public $service;
+	public $message;
+	public $lieu;
+	public $prix;
+	
+	public function __construct($new_demandeur,$new_service,$new_message,$new_lieu,$new_prix)
+	{
+		$this->idAnnonce = -1 ;
+		$this->demandeur = $new_demandeur;		
+		$this->service =$new_service;
+		$this->message = $new_message;
+		$this->lieu = $new_lieu;
+		$this->prix = $new_prix;
+	}
+
 	function verifier_utilisateurs_dispos($service) {
 		
 		global $bdd;
@@ -32,4 +51,6 @@
 		$stmt->closeCursor();
 		$stmt = NULL;
 	}
+	
+}
 ?>
