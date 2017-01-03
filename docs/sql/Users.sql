@@ -30,7 +30,7 @@ CREATE TABLE Ordonnance (
 
 CREATE TABLE Service (
 	idService int AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	nom varchar(32) NOT NULL
+	nom varchar(128) NOT NULL
 );
 
 CREATE TABLE UtilisateurService(
@@ -38,8 +38,7 @@ CREATE TABLE UtilisateurService(
 	FOREIGN KEY(idUtilisateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
 	idService int NOT NULL,
 	FOREIGN KEY(idService) REFERENCES Service(idService) ON DELETE CASCADE,
-	dateDebut timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	dateFin timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	disponible boolean NOT NULL
 );
 
 CREATE TABLE Annonce (
