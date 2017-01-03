@@ -17,11 +17,10 @@ if(empty($lieu) || empty($message) || empty($prix)) {
 }
 else {
 	include_once('../Model/fonctionsAnnonces.php');
-	if(verifier_utilisateur_dispos($service) == false) {
-		poster_annonce($service, $lieu, $prix, $message);
-	}
-	else {
-		
+	poster_annonce($service, $lieu, $prix, $message);
+	if(verifier_utilisateur_dispos($service) != false) {
+		$users = verifier_utilisateur_dispos($service);
+		//IL FAUT NOTIFIER TOUS LES UILISATEURS PAR UN MESSAGE PRIVE
 	}
 }
 ?>

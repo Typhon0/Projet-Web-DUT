@@ -11,7 +11,8 @@
 		if($req->num_rows == 0) {
 			return false;
 		}
-		$usersDispos = $req->fetchAll();
+		include_once('../Model/Users.php');
+		$usersDispos = $req->fetchAll(PDO::FETCH_CLASS, "Users");
 		return $usersDispos;
 	}
 	
