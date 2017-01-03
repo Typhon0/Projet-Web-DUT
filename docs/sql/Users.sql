@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Ordonnance, Utilisateur, Agenda, Service, UtilisateurService;
+DROP TABLE IF EXISTS Annonce, Ordonnance, Utilisateur, Agenda, Service, UtilisateurService;
 
 CREATE TABLE Agenda (
    	numAgenda int AUTO_INCREMENT,
@@ -40,4 +40,12 @@ CREATE TABLE UtilisateurService(
 	FOREIGN KEY(idService) REFERENCES Service(idService) ON DELETE CASCADE,
 	dateDebut timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	dateFin timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Annonce (
+	idAnnonce int AUTO_INCREMENT PRIMARY KEY,
+	demandeur int NOT NULL,
+	FOREIGN KEY(demandeur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
+	lieu varchar(255) NOT NULL,
+	prix int NOT NULL
 );
