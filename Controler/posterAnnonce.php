@@ -28,7 +28,7 @@ else {
 	$stmt = $bdd->prepare($query);
 	 
 	//PROBLEME AVEC L'ID DE L'UTILISTEUR
-	$stmt->bindValue(1, , PDO::PARAM_INT);
+	$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 	$stmt->bindValue(2, $service, PDO::PARAM_INT);
 	$stmt->bindValue(3, $lieu, PDO::PARAM_STR);
 	$stmt->bindValue(4, $prix, PDO::PARAM_INT);

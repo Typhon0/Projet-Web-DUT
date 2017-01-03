@@ -9,7 +9,6 @@ class Users
 	public $desc ;
 	public $date_de_naissance ;
 	public $type ;
-	public $numAgenda ;
 
 	
 	public function __construct($new_pseudo,$new_email,$new_mdp,$new_desc,$new_ddn,$new_type)
@@ -92,6 +91,7 @@ class Users
 		{
 			echo 'erreur :'.$e->getMessage();
 		}
+		
 	}
 }
 ?>

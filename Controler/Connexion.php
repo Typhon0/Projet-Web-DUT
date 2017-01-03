@@ -1,22 +1,40 @@
 <?php
-function Connection(){
+function connection(){
 	$login =$_POST['login'];
 	$pass = $_POST['mdp'];
-	try{
-			$bdd = new PDO('mysql:host=localhost;dbname=utilisateurs;charset=utf8', 'root', '');
-		}
-		catch(Exception $e){
-			die('Erreur : '.$e->getMessage());
+	include_once('../Model/Users.php');
+	
+	$usr = get_user($login);
+	if ($usr->mdp == $pass) {
+		$_SESSION['user_id'] = $usr->id;
+		$_SESSION['username'] = $login;
+		return true;
+	} else {
+		echo "Connexion refusée : Mot de passe incorrect";
+		return false;
 	}
-	$req = $bdd->prepare('SELECT mot_de_passe FROM utilisateur where nom_dutilisateur = ?');
-	$req->execute(array($login));
-	if($res = $req->fetch()){
-		if($res['mot_de_passe'] == $pass){
-			echo 'Vous êtes bien connecté';
-		}
-		else{
-			echo 'Mot de passe incorrect';
-		}
-	}
+	
  }
+ 
+ /*function login_check($mysqli) {
+	 include_once('../Model/config.php');
+    // Check if all session variables are set 
+    if (isset($_SESSION['user_id'], $_SESSION['username'])) {
+        $user_id = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+
+        // Get the user-agent string of the user.
+        $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+        if ($stmt = $bdd->prepare("SELECT mdp 
+				      FROM Utilisateur 
+				      WHERE idUtilisateur = ? LIMIT 1")) {
+            // Bind "$user_id" to parameter. 
+            $stmt->bindValue(1, $user_id, PDO::PARAM_STR);
+            $stmt->execute();   // Execute the prepared query.
+            $stmt->store_result();
+
+            
+}
+*/
 ?>
