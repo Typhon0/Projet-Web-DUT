@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Annonce, Ordonnance, Evenement, Agenda, Utilisateur, Service, UtilisateurService;
+DROP TABLE IF EXISTS Annonce, Ordonnance, Evenement, UtilisateurService, Service, Utilisateur;
 
 CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
@@ -8,8 +8,7 @@ CREATE TABLE Utilisateur (
 	description text NOT NULL,
 	dateNaiss date NOT NULL,
     type varchar(32) NOT NULL,
-	avatar varchar(100) collate latin1_general_ci, 
-	--PLUS DE IDAGENDA DANS LA TABLE UTILISATEUR
+	avatar varchar(100) collate latin1_general_ci
 );
 
 CREATE TABLE Agenda (
