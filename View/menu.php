@@ -13,7 +13,6 @@
                 <li> <a href="#">Annonce</a> </li>
                 <li> <a href="#">Mon agenda</a> </li>
                 <li> <a href="#">Forum</a> </li>
-                <li> <a href="#">Messagerie</a> </li>
                 <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Informations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Données médicales</a></li>
