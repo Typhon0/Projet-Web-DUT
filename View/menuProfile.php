@@ -6,7 +6,7 @@
                         <ul class="nav navbar-nav">
                             <li> <a href="Profile.php">Compte</a> </li>
                             <li> <a href="#">Messagerie</a> </li>
-                            <li> <a href="#">Mes annonces</a> </li>
+                            <li> <a href="mesAnnonces.php">Mes annonces</a> </li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
