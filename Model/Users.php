@@ -21,33 +21,38 @@ class Users
 		$this->desc = $new_desc ;
 		$this->date_de_naissance = $new_ddn ;
 		$this->type = $new_type ;
-		$this->numAgenda = -1 ;
 	}
 	
 	public function add_user(Users $users)
 	{
 		include('config.php');
 		//preparation de la requête pour ajouter
-		$req = $bdd->prepare('INSERT INTO utilisateur (login,email,mdp,description,dateNaiss,type,numAgenda) VALUES (:login, :email, :mdp, :description, :dateNaiss, :type, :numAgenda)');
+		$req = $bdd->prepare('INSERT INTO utilisateur (login,email,mdp,description,dateNaiss,type) VALUES (:login, :email, :mdp, :description, :dateNaiss, :type)');
 
 		// test de présence du login ou de l'email dans la bdd
 		$error = $users->find_user($users);
 		if(!empty($error))
 			return $error ;
+
+
 		// tentative d'ajout dans la base de données avec les arguments
-		$num = $users->add_agenda_users();
-		echo "num = ".$num ;
 		if($req->execute(array('login' => $users->pseudo,
 							'email' => $users->email,
 							'mdp' => $users->mdp,
 							'description' => $users->desc,
 							'dateNaiss' => $users->date_de_naissance,
 							'type' => $users->type,
-							'numAgenda' => $num
 							)
 						)
 			)
-			return 'true' ;
+			{
+				$us = $users->get_user($users->pseudo) ;
+				$id_user = $us['idUtilisateur'];
+				$req1 = $bdd->prepare('INSERT INTO agenda (idUtilisateur) VALUES (:idUtilisateur)');
+				$req1->execute(array('idUtilisateur' => $id_user,));	
+				return 'true' ;
+			}
+		
 		else
 			return 'false' ;
 	}
@@ -71,40 +76,18 @@ class Users
 		}
 	}
 	
-	public function add_agenda_users()
-	{
-		include('config.php');
-		try{
-			$req = $bdd->prepare('select * from utilisateur ORDER BY idUtilisateur ASC');
-			$req->execute();
-			$val ;
-			while($donnees =$req->fetch())
-			{
-				$val = $donnees['idUtilisateur'] ;
-			}
-			echo $val+1 ;
-			$req1 = $bdd->prepare('INSERT INTO agenda (numAgenda,date,contenu) VALUES (:numAgenda, :date, :contenu)');
-			$req1->execute(array('numAgenda' => $val+1,
-							'date' => '0000-00-00',
-							'contenu' => ''
-							)
-						);
-			return $val+1 ;	
-		}
-		catch (Exception $e)
-		{
-			die('Erreur : ' . $e->getMessage());
-		}
-	}
-	
 	public function get_user($pseudo)
 	{
 		include('config.php');
 		try{
-			$req = $bdd->prepare('select * from users where pseudo = ?');
+			$req = $bdd->prepare('select * from utilisateur where login = ?');
 			$req->execute(array($pseudo));
 			if($donnees = $req->fetch())
+			{
+				$originalDate = $donnees['dateNaiss'] ;
+				$donnees['dateNaiss'] = date("d-m-Y", strtotime($originalDate));
 				return $donnees ;
+			}
 		} catch(Exception $e)
 		{
 			echo 'erreur :'.$e->getMessage();
