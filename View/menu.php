@@ -20,7 +20,7 @@
                     </ul>
                 </li>
             </ul>
-            <li><a href="#" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">Login</a> </li>
+            <li><a href="View/login.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">Login</a> </li>
         </div>
         <!-- /.navbar-collapse -->
     </div>

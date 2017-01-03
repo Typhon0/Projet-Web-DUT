@@ -22,6 +22,51 @@ body {
     list-style: none;
 }
 
+.addannonce {
+    margin-top: 15%;
+}
+
+#listannonceP{
+        margin-top: 5%;
+
+}
+
+#listannonce {
+    border-top: 1px solid #F3F3F3;
+    height: 120px;
+}
+
+#listannonce a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333333;
+}
+
+#listannonce .title {
+    color: #333333 !important;
+    font-size: 22px;
+    margin-top: 15px;
+    font-weight: normal;
+}
+
+#listannonce .username {
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#listannonce .username .firstname {
+    font-weight: bold;
+}
+
+#listannonce .budget,
+#listannonce .duration {
+    width: auto;
+    float: left;
+    padding-right: 20px;
+}
+
 @media(min-width:768px) {
     body {
         padding-top: 100px;
