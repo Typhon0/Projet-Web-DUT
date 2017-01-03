@@ -1,13 +1,15 @@
 <?php
 
-	function verifier_utilisateurs_dispos() {
+	function verifier_utilisateurs_dispos($service) {
 		
 		global $bdd;
+		$service = (string) $service;
 		
-		$req = $bdd->prepare('SELECT idUtilisateur FROM UtilisateurService WHERE idService=? AND disponible=true');
-		$req->bindValue(1, $service, PDO::PARAM_INT);
+		$req = $bdd->prepare('SELECT idUtilisateur FROM UtilisateurService WHERE idService=(SELECT idService FROM Service WHERE nom=:service;) AND disponible=true');
+		$req->bindParam(':service', $service, PDO::PARAM_STR);
 		$req->execute();
 		$usersDispos = $req->fetchAll();
 		
 		return $usersDispos;
 	}
+?>

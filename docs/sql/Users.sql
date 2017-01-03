@@ -1,11 +1,4 @@
-DROP TABLE IF EXISTS Annonce, Ordonnance, Utilisateur, Agenda, Service, UtilisateurService;
-
-CREATE TABLE Agenda (
-   	numAgenda int AUTO_INCREMENT,
-    date date,
-    contenu varchar(255),
-	PRIMARY KEY(numAgenda, date, contenu)
-);
+DROP TABLE IF EXISTS Annonce, Ordonnance, Evenement, Agenda, Utilisateur, Service, UtilisateurService;
 
 CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
@@ -16,8 +9,22 @@ CREATE TABLE Utilisateur (
 	dateNaiss date NOT NULL,
     type varchar(32) NOT NULL,
 	avatar varchar(100) collate latin1_general_ci, 
-	numAgenda int NOT NULL,
-    FOREIGN KEY(numAgenda) REFERENCES Agenda(numAgenda) ON DELETE CASCADE
+	--PLUS DE IDAGENDA DANS LA TABLE UTILISATEUR
+);
+
+CREATE TABLE Agenda (
+	idAgenda int AUTO_INCREMENT NOT NULL,
+	idUtilisateur int NOT NULL,
+	FOREIGN KEY(idUtilisateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
+	PRIMARY KEY(idAgenda, idUtilisateur)
+);
+
+CREATE TABLE Evenement (
+	idEvenement int AUTO_INCREMENT PRIMARY KEY,
+	dateheure timestamp NOT NULL,
+	resume varchar(255),
+	idAgenda int NOT NULL,
+	FOREIGN KEY(idAgenda) REFERENCES Agenda(idAgenda) ON DELETE CASCADE
 );
     
 CREATE TABLE Ordonnance (
