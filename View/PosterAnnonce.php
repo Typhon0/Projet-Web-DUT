@@ -8,7 +8,7 @@
         <h2>Poster une annonce</h2>
         
         <p>
-<form action="annonce.php" method="post">
+<form action="posterAnnonce.php" method="post">
 		<p>Type de service : <FORM>
 	<SELECT name="service" size="1">
 		<OPTION>Bricolage - Travaux</OPTION>
@@ -36,11 +36,6 @@ Date :</TEXTAREA>
 		<p><input type="submit" value="Poster annonce"></p>
 		
 </form>
-</p>
-     
-       
-        
-        
-        
-    </body>
+</p>      
+</body>
 </html>
