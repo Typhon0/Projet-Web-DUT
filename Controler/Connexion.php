@@ -8,9 +8,11 @@ function connection(){
 	if ($usr->mdp == $pass) {
 		$_SESSION['user_id'] = $usr->id;
 		$_SESSION['username'] = $login;
+		$_SESSION['logged'] = true;
 		return true;
 	} else {
 		echo "Connexion refusée : Mot de passe incorrect";
+		$_SESSION['logged'] = false;
 		return false;
 	}
 	

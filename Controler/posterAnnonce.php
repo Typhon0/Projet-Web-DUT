@@ -16,26 +16,12 @@ if(empty($lieu) || empty($message) || empty($prix)) {
 	}
 }
 else {
-	try {
-		$bdd = new PDO('mysql:host=86.105.212.158;dbname=ProjetWebDUT;charset=utf8', 'ProjetWebDUT', 'sVdWd4gt6VL01mOW');
+	include_once('../Model/fonctionsAnnonces.php');
+	if(verifier_utilisateur_dispos($service) == false) {
+		poster_annonce($service, $lieu, $prix, $message);
 	}
-	catch(PDOException $e) {
-		$msg = 'ERREUR PDO dans ' .$e->getFile() . ' L.' . $e->getLine() . ':' . $e->getMessage();
-		die($msg);
+	else {
+		
 	}
-	
-	$query = 'INSERT INTO Annonce (demandeur, catService, lieu, prix, message) VALUES (?, ?, ?, ?, ?);';
-	$stmt = $bdd->prepare($query);
-	 
-	//PROBLEME AVEC L'ID DE L'UTILISTEUR
-	$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
-	$stmt->bindValue(2, $service, PDO::PARAM_INT);
-	$stmt->bindValue(3, $lieu, PDO::PARAM_STR);
-	$stmt->bindValue(4, $prix, PDO::PARAM_INT);
-	$stmt->bindValue(5, $message, PDO::PARAM_STR);
-	 
-	$stmt->execute();
-	$stmt->closeCursor();
-	$stmt = NULL;
 }
 ?>
