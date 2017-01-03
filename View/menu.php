@@ -9,10 +9,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li> <a href="#">Acceuil</a> </li>
+                <li> <a href="#">Accueil</a> </li>
                 <li> <a href="#">Annonce</a> </li>
                 <li> <a href="#">Mon agenda</a> </li>
                 <li> <a href="#">Forum</a> </li>
+                <li> <a href="#">Messagerie</a> </li>
                 <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Informations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Données médicales</a></li>
