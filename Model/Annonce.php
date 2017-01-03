@@ -84,5 +84,15 @@ class Annonce {
 		$stmt->closeCursor();
 		$stmt = NULL;
 	}
+	
+	function get_all_anonces() {
+		include_once('../Model/config.php');
+		
+		$query = 'SELECT * FROM Annonce';
+		$stmt = $bdd->prepare($query);
+		$stmt->execute();
+		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		return $lesAnnonces;
+	}
 }
 ?>
