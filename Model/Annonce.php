@@ -5,18 +5,18 @@ class Annonce {
 	public $idAnnonce;
 	public $demandeur;
 	public $service;
-	public $message;
 	public $lieu;
 	public $prix;
+	public $message;
 	
-	public function __construct($new_demandeur,$new_service,$new_message,$new_lieu,$new_prix)
+	public function __construct($new_demandeur,$new_service,$new_lieu,$new_prix,$new_message)
 	{
 		$this->idAnnonce = -1 ;
 		$this->demandeur = $new_demandeur;		
 		$this->service =$new_service;
-		$this->message = $new_message;
 		$this->lieu = $new_lieu;
 		$this->prix = $new_prix;
+		$this->message = $new_message;
 	}
 
 	function verifier_utilisateurs_dispos($service) {
@@ -52,5 +52,37 @@ class Annonce {
 		$stmt = NULL;
 	}
 	
+	function get_annonces_postees() {
+		include_once('../Model/config.php');
+		
+		$query = 'SELECT * FROM Annonce WHERE demandeur = ?';
+		$stmt = $bdd->prepare($query);
+		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
+		$stmt->execute();
+		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		return $lesAnnonces;
+	}
+	
+	function get_annonces_sauvegardees() {
+		include_once('../Model/config.php');
+		
+		$query = 'SELECT * FROM AnnonceSauv WHERE idUtilisateur = ?';
+		$stmt = $bdd->prepare($query);
+		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
+		$stmt->execute();
+		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		return $lesAnnonces;
+	}
+	
+	function delete_annonce($idAnnonce) {
+		include_once('../Model/config.php');
+		
+		$query = 'DELETE FROM Annonce WHERE idAnnonce = ?');
+		$stmt = $bdd->prepare($query);
+		$stmt->bindValue(1, $idAnnonce, PDO::PARAM_INT);
+		$stmt->execute();
+		$stmt->closeCursor();
+		$stmt = NULL;
+	}
 }
 ?>
