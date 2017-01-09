@@ -27,7 +27,7 @@
                         <li>
                             <a href="http://localhost/Projet-Web-DUT/View/Profile.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
                                 <?php echo $_SESSION['username']?>
-                            </a> <a href="./Controler/logout.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
+                            </a> <a href="http://localhost/Projet-Web-DUT/Controler/logout.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
                               Logout
                             </a> </li>
                         <?php }?>

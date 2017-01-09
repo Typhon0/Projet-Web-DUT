@@ -24,11 +24,11 @@ body {
 
 .addannonce {
     margin-top: 15%;
+    width: 20%;
 }
 
-#listannonceP{
-        margin-top: 5%;
-
+#listannonceP {
+    margin-top: 3%;
 }
 
 #listannonce {

@@ -29,7 +29,9 @@
             <!-- Page Content -->
             <div class="container">
                 <div class="row">
-                    <button id="singlebutton" name="singlebutton" type="button " class="btn btn-primary btn-lg hvr-buzz center-block addannonce">Ajouter une annonce</button>
+                    <?php if($_SESSION['logged']==1){?> <a href="http://localhost/Projet-Web-DUT/View/PosterAnnonce.php" id="singlebutton" name="singlebutton" type="button " role="button" class=" btn btn-primary btn-lg hvr-buzz center-block addannonce ">Ajouter une annonce</a>
+                        <?php } else if ($_SESSION['logged']==0){?> <a href="http://localhost/Projet-Web-DUT/View/login.php" id="singlebutton " name="singlebutton " type="button " role="button " class="btn btn-primary btn-lg hvr-buzz center-block addannonce">Ajouter une annonce</a>
+                            <?php }?>
                 </div>
             </div>
             <?php
