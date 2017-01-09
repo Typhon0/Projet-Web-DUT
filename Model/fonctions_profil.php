@@ -41,7 +41,8 @@
 	function get_services($idUser) {
 		include('config.php');
 		
-		$stmt = $bdd->prepare('SELECT idService FROM UtilisateurService WHERE disponible = 1');
+		$stmt = $bdd->prepare('SELECT idService FROM UtilisateurService WHERE idUtilisateur = ?');
+		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->execute();
 		$lesServices = $stmt->fetchAll();
 		return $lesServices;
