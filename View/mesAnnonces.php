@@ -26,6 +26,10 @@
 <body>
     <?php require("menu.php");?>
         <!-- Page Content -->
+		<?php
+		include_once('Model/fonctions_annonces.php');
+		$lesAnnonces = get_annonces_postees();
+		?>
         <div class="container">
             <?php require("menuProfile.php");?>
                 <ul class="nav nav-tabs">
@@ -40,8 +44,8 @@
                                 <div class="col-xs-12">
                                     <?php $annonces = get_annonces_postees();
                                     
-                                    while($annonces) { ?>
-                                        <?php echo $annonces['dgds']?>
+                                    foreach ($annonces as $annonce) { ?>
+                                        <?php echo $annonce['dgds']?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
                                                     <div class="col-xs-3 col-sm-2 text-center no-padding">
@@ -58,21 +62,6 @@
                                                 </a>
                                             </div>
                                             <?php } ?>
-                                                <div id="listannonce" class="row">
-                                                    <a href="#">
-                                                        <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                                            <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
-                                                        </div>
-                                                        <div class="col-xs-9 col-sm-10">
-                                                            <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                                            <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                            <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                                            <div class="duration"> Durée : <b>1 jour</b> </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
                                 </div>
                             </div>
                         </div>

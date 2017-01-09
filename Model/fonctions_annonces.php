@@ -52,11 +52,11 @@ function verifier_utilisateurs_dispos($service) {
 		include_once('config.php');
 		include_once('Annonce.php');
 		
-		$query = 'SELECT titre, service, lieu, prix, message FROM Annonce WHERE demandeur = ?';
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE demandeur = ?';
 		$stmt = $bdd->prepare($query);
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->execute();
-		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		$lesAnnonces = $stmt->fetchAll();
 		return $lesAnnonces;
 	}
 	
@@ -87,7 +87,7 @@ function verifier_utilisateurs_dispos($service) {
 		include_once('config.php');
 		include_once('Annonce.php');
 		
-		$query = 'SELECT titre, service, lieu, prix, message FROM Annonce';
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce';
 		$stmt = $bdd->prepare($query);
 		$stmt->execute();
 		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
