@@ -30,6 +30,11 @@
                 <button id="singlebutton" name="singlebutton" type="button " class="btn btn-primary btn-lg hvr-buzz center-block addannonce">Ajouter une annonce</button>
             </div>
         </div>
+		<?php
+		include_once('Model/fonctions_annonces.php');
+		$lesAnnonces = get_annonces(3);
+		foreach ($lesAnnonces as $annonce) {
+		?>
         <div id="listannonceP" class="row">
             <div class="col-xs-12">
                 <div class="col-xs-4"></div>
@@ -41,34 +46,21 @@
                             </div>
                             <div class="col-xs-9 col-sm-10">
                                 <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
+                                            <?php echo $annonce['titre'] ?>                                       </h4>
+                                <div class="username"> <span class="capitalize firstname">
+											<?php $username = get_username_demandeur($annonce['demandeur']);
+													echo $username ?></span> - posté aujourd'hui, à 09:59 </div>
                                 <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                <div class="duration"> Durée : <b>1 jour</b> </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="listannonce" class="row">
-                        <a href="#">
-                            <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                <div class="search-icon"></div>
-                            </div>
-                            <div class="col-xs-9 col-sm-10">
-                                <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                <div class="duration"> Durée : <b>1 jour</b> </div>
+                                            <?php echo $annonce['prix'] ?> </b> </div>
+                                <div class="duration"> Lieu : <b>
+											<?php echo $annonce['lieu'] ?> </b> </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                
-                <div class="col-xs-4"></div>
             </div>
         </div>
+		<?php } ?>
         </div>
         <!-- /.container -->
         <!-- jQuery -->
