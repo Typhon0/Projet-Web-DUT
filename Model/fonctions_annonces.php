@@ -1,4 +1,6 @@
 <?php 
+
+
 function verifier_utilisateurs_dispos($service) {
 		include_once('Users.php');
 		global $bdd;
@@ -17,14 +19,26 @@ function verifier_utilisateurs_dispos($service) {
 	
 	function poster_annonce($titre, $service, $lieu, $prix, $message) {
 		include_once('config.php');
+        $query1 = 'SELECT idService FROM Service WHERE nom = ?';
+        $req = $bdd->prepare($query1);
+        $req->bindValue(1,$service, PDO::PARAM_STR);
+        $req->execute();
+        $idService=0;
+        	if ($donnee = $req->fetch()) {
+			$idService = $donnee['idService'];
+		};
+
 		
 		$query = 'INSERT INTO Annonce (demandeur, titre, service, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
+        
 		$stmt = $bdd->prepare($query);
+        
+        
 
 		 
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->bindValue(2, $titre, PDO::PARAM_STR);
-		$stmt->bindValue(3, $service, PDO::PARAM_INT);
+		$stmt->bindValue(3, $idService, PDO::PARAM_INT);
 		$stmt->bindValue(4, $lieu, PDO::PARAM_STR);
 		$stmt->bindValue(5, $prix, PDO::PARAM_INT);
 		$stmt->bindValue(6, $message, PDO::PARAM_STR);

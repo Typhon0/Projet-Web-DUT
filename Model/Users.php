@@ -26,7 +26,7 @@ class Users
 	{
 		include('config.php');
 		//preparation de la requête pour ajouter
-		$req = $bdd->prepare('INSERT INTO utilisateur (login,email,mdp,description,dateNaiss,type) VALUES (:login, :email, :mdp, :description, :dateNaiss, :type)');
+		$req = $bdd->prepare('INSERT INTO Utilisateur (login,email,mdp,description,dateNaiss,type) VALUES (:login, :email, :mdp, :description, :dateNaiss, :type)');
 
 		// test de présence du login ou de l'email dans la bdd
 		$error = $users->find_user($users);
@@ -79,7 +79,7 @@ class Users
 	{
 		include('config.php');
 		try{
-			$req = $bdd->prepare('select * from utilisateur where login = ?');
+			$req = $bdd->prepare('select * from Utilisateur where login = ?');
 			$req->execute(array($pseudo));
 			if($donnees = $req->fetch())
 			{
@@ -98,7 +98,7 @@ class Users
 	{
 		include('config.php');
 		try{
-			$req = $bdd->prepare('select * from utilisateur where email = ?');
+			$req = $bdd->prepare('select * from Utilisateur where email = ?');
 			$req->execute(array($email));
 			if($donnees = $req->fetch())
 			{

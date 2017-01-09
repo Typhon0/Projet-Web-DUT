@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -11,6 +12,7 @@ function connection(){
 	include_once('../Model/Users.php');
 
 	$usr = Users::get_info_connect_user($login);
+    
     echo $usr['email'];
 	if ($usr['mdp'] == $pass) {
 		echo "connecté" ;
@@ -26,5 +28,14 @@ function connection(){
 	}
  
  	connection();
+
+if($_SESSION['logged'] = true){
+    header('Location: ../index.php');
+
+    
+}else{
+    header('Location: ../View/Errorlogin.php');
+
+}
  
 ?>
