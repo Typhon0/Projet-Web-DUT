@@ -93,6 +93,7 @@ class Users
 		}
 		
 	}
+		
 	public function get_info_connect_user($email)
 	{
 		include('config.php');

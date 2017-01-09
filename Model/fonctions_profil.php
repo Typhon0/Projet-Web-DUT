@@ -1,0 +1,49 @@
+<?php 
+	public function get_pseudo_user($idUser)
+	{
+		include('config.php');
+		try{
+			$req = $bdd->prepare('select * from utilisateur where idUtilisateur = ?');
+			$req->bindValue(1, $idUser, PDO::PARAM_INT);
+			$req->execute();
+			if($donnees = $req->fetch())
+			{
+				$originalDate = $donnees['dateNaiss'] ;
+				$donnees['dateNaiss'] = date("d-m-Y", strtotime($originalDate));
+				return $donnees ;
+			}
+		} catch(Exception $e)
+		{
+			echo 'erreur :'.$e->getMessage();
+		}
+		
+	}
+	
+	public function get_user($pseudo)
+	{
+		include('config.php');
+		try{
+			$req = $bdd->prepare('select * from utilisateur where login = ?');
+			$req->execute(array($pseudo));
+			if($donnees = $req->fetch())
+			{
+				$originalDate = $donnees['dateNaiss'] ;
+				$donnees['dateNaiss'] = date("d-m-Y", strtotime($originalDate));
+				return $donnees ;
+			}
+		} catch(Exception $e)
+		{
+			echo 'erreur :'.$e->getMessage();
+		}
+		
+	}
+	
+	public function get_services($idUser) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT idService FROM UtilisateurService WHERE disponible = 1');
+		$stmt->execute();
+		$lesServices = $stmt->fetchAll();
+		return $lesAServices;
+	}
+?>
