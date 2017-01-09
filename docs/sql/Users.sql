@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Message, Annonce, Ordonnance, Evenement, UtilisateurService, Service, Agenda, Utilisateur;
+DROP TABLE IF EXISTS Message, AnnonceSauv, Annonce, Ordonnance, Evenement, UtilisateurService, Service, Agenda, Utilisateur;
 
 CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
