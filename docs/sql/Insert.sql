@@ -6,8 +6,8 @@ INSERT INTO Service(nom) VALUES ('Bricolage - Travaux'), ('Jardinage - Piscine')
 INSERT INTO Utilisateur(login, email, mdp, description, dateNaiss, typeU) VALUES 
 ('Dorian', 'dorian@email.fr', 'mdp', 'Description de Dorian', '1997-12-10', 'type'), 
 ('Loic', 'loic@email.fr', 'mdp', 'Description de Loic', '1996-06-02', 'type'),
-('Anthony', 'anthony@email.fr', 'mdp', 'Description d"'"Anthony', '1996-06-02', 'type'),
-('Aymeric', 'aymeric@email.fr', 'mdp', 'Description d"'"Aymeric', '1996-06-02', 'type'),
+('Anthony', 'anthony@email.fr', 'mdp', 'Description d Anthony', '1996-06-02', 'type'),
+('Aymeric', 'aymeric@email.fr', 'mdp', 'Description d Aymeric', '1996-06-02', 'type'),
 ('Karim', 'karim@email.fr', 'mdp', 'Description de Karim', '1996-06-02', 'type'),
 ('Saliou', 'saliou@email.fr', 'mdp', 'Description de Saliou', '1996-06-02', 'type'),
 ('Wafi', 'wafi@email.fr', 'mdp', 'Description de Wafi', '1996-06-02', 'type');
