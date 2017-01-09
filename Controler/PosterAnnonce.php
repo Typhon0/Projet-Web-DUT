@@ -14,7 +14,7 @@ $prix = $_POST['prix'];
 
 poster_annonce($titre,$service,$lieu,$prix,$message);
 
-echo "Sucess";
+header('Location: ../index.php');
 
 
 ?>
