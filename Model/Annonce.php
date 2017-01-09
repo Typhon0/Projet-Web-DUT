@@ -4,15 +4,17 @@ class Annonce {
 	
 	public $idAnnonce;
 	public $demandeur;
+	public $titre;
 	public $service;
 	public $lieu;
 	public $prix;
 	public $message;
 	
-	public function __construct($new_demandeur,$new_service,$new_lieu,$new_prix,$new_message)
+	public function __construct($new_demandeur,$new_titre,$new_service,$new_lieu,$new_prix,$new_message)
 	{
 		$this->idAnnonce = -1 ;
-		$this->demandeur = $new_demandeur;		
+		$this->demandeur = $new_demandeur;	
+		$this->titre = $new_titre;
 		$this->service =$new_service;
 		$this->lieu = $new_lieu;
 		$this->prix = $new_prix;
@@ -35,17 +37,18 @@ class Annonce {
 		return $usersDispos;
 	}
 	
-	function poster_annonce($service, $lieu, $prix, $message) {
+	function poster_annonce($titre, $service, $lieu, $prix, $message) {
 		include_once('../Model/config.php');
 		
-		$query = 'INSERT INTO Annonce (demandeur, catService, lieu, prix, message) VALUES (?, ?, ?, ?, ?);';
+		$query = 'INSERT INTO Annonce (demandeur, titre, catService, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
 		$stmt = $bdd->prepare($query);
 		 
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
-		$stmt->bindValue(2, $service, PDO::PARAM_INT);
-		$stmt->bindValue(3, $lieu, PDO::PARAM_STR);
-		$stmt->bindValue(4, $prix, PDO::PARAM_INT);
-		$stmt->bindValue(5, $message, PDO::PARAM_STR);
+		$stmt->bindValue(2, $titre, PDO::PARAM_STR);
+		$stmt->bindValue(3, $service, PDO::PARAM_INT);
+		$stmt->bindValue(4, $lieu, PDO::PARAM_STR);
+		$stmt->bindValue(5, $prix, PDO::PARAM_INT);
+		$stmt->bindValue(6, $message, PDO::PARAM_STR);
 		 
 		$stmt->execute();
 		$stmt->closeCursor();

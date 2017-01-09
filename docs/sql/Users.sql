@@ -51,8 +51,12 @@ CREATE TABLE Annonce (
 	idAnnonce int AUTO_INCREMENT PRIMARY KEY,
 	demandeur int NOT NULL,
 	FOREIGN KEY(demandeur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
+	titre varchar(255) NOT NULL,
+	service int NOT NULL,
+	FOREIGN KEY(service) REFERENCES Service(idService) ON DELETE CASCADE,
 	lieu varchar(255) NOT NULL,
-	prix int NOT NULL
+	prix int NOT NULL,
+	message text NOT NULL
 );
 
 Create Table Message (
