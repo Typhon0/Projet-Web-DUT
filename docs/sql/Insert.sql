@@ -18,7 +18,7 @@ INSERT INTO UtilisateurService VALUES
 (2, 4, true);
 
 INSERT INTO Annonce (demandeur, titre, service, lieu, prix, message) VALUES
-(1, 'Location kangourou', 9, 'Maubeauge', 2, 'Bonjour, je voudrais louer un kangourou pour un combat de boxe'),
+(1, 'Location kangourou', 9, 'Maubeuge', 2, 'Bonjour, je voudrais louer un kangourou pour un combat de boxe'),
 (2, 'Location voiture', 6, 'Valenciennes', 50, 'Bonjour, je voudrais louer une voiture pour un court trajet');
 
 INSERT INTO AnnonceSauv VALUES

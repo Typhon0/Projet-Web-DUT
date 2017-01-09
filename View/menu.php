@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li> <a href="http://localhost/Projet-Web-DUT">Accueil</a> </li>
-                    <li> <a href="#">Annonce</a> </li>
+                    <li> <a href="http://localhost/Projet-Web-DUT/View/all_annonces.php">Annonce</a> </li>
                     <li> <a href="#">Mon agenda</a> </li>
                     <li> <a href="#">Forum</a> </li>
                     <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Informations <b class="caret"></b></a>

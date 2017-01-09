@@ -92,9 +92,8 @@ function verifier_utilisateurs_dispos($service) {
 		$stmt = NULL;
 	}
 	
-	function get_all_anonces() {
-		include_once('config.php');
-		include_once('Annonce.php');
+	function get_all_annonces() {
+		include('config.php');
 		
 		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce';
 		$stmt = $bdd->prepare($query);
