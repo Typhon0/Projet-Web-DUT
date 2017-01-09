@@ -103,4 +103,17 @@ function verifier_utilisateurs_dispos($service) {
 			return $donnee['login'];
 		}
 	}
+	
+	function get_nomService($idService) {
+		include('config.php');
+		
+		$query = 'SELECT nom FROM Service WHERE idService = ?';
+		$stmt = $bdd->prepare($query);
+		$stmt->bindValue(1, $idService, PDO::PARAM_INT);
+		$stmt->execute();
+		//$username = $stmt->fetch();
+		if ($donnee = $stmt->fetch()) {
+			return $donnee['nom'];
+		}
+	}
 ?>

@@ -47,7 +47,10 @@
                             <div class="col-xs-9 col-sm-10">
                                 <h4 class="title">
                                             <?php echo $annonce['titre'] ?>                                       </h4>
-                                <div class="username"> <span class="capitalize firstname">
+								<div class="username"> Type de service : <span class="capitalize firstname">
+											<?php $service = get_nomService($annonce['service']);
+													echo $service ?></span></div>
+                                <div class="username"> Utilisateur : <span class="capitalize firstname">
 											<?php $username = get_username_demandeur($annonce['demandeur']);
 													echo $username ?></span></div>
                                 <div class="budget"> Budget : <b>
