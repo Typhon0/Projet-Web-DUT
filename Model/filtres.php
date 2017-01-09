@@ -29,7 +29,7 @@
 	}
 	
 	function recherche_annonce_prix($min) {
-		include('Config.php');
+		include('config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE prix >= ?');
 		$stmt->bindValue(1, $min, PDO::PARAM_INT);
@@ -48,10 +48,55 @@
 	}
 	
 	function recherche_annonce_lieu($lieu) {
-		include('Config.php');
+		include('config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE lieu = ?');
 		$stmt->bindValue(1, $lieu, PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	
+	function recherche_annonce_service_prix($service, $prix) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE service = (SELECT idService FROM Service WHERE nom = ?) AND prix >= ?');
+		$stmt->bindValue(1, $service, PDO::PARAM_STR);
+		$stmt->bindValue(2, $prix, PDO::PARAM_INT);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	
+	function recherche_annonce_service_lieu($service, $lieu) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE service = (SELECT idService FROM Service WHERE nom = ?) AND lieu = ?');
+		$stmt->bindValue(1, $service, PDO::PARAM_STR);
+		$stmt->bindValue(2, $lieu, PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	
+	function recherche_annonce_prix_lieu($prix, $lieu) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE lieu = ? AND prix >= ?');
+		$stmt->bindValue(1, $lieu, PDO::PARAM_STR);
+		$stmt->bindValue(2, $prix, PDO::PARAM_INT);
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	
+	function recherche_annonce_service_lieu_prix($service, $lieu, $prix) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE service = (SELECT idService FROM Service WHERE nom = ?) AND lieu = ? AND prix >= ?');
+		$stmt->bindValue(1, $service, PDO::PARAM_STR);
+		$stmt->bindValue(2, $lieu, PDO::PARAM_STR);
+		$stmt->bindValue(3, $prix, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		return $result;

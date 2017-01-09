@@ -34,18 +34,26 @@
 				$filtreService = $_POST['service'];
 				$filtrePrix = $_POST['prixMin'];
 				$filtreLieu = $_POST['lieu'];
-				if (!empty($filtreService)) {
-					$lesAnnonces = recherche_annonce_service($filtreService);
-             
-
-				} else if (!empty($filtrePrix)) {
-					$lesAnnonces = recherche_annonce_prix($filtrePrix);
-				} else if (!empty($filtreLieu)) {
-					$lesAnnonces = recherche_annonce_lieu($filtreLieu);
-				} else { ?>
+				if (!empty($filtreService) && !empty($filtrePrix) && !empty($filtreLieu)) {
+					$lesAnnonces = recherche_annonce_service_lieu_prix($filtreService, $filtreLieu, $filtrePrix);
+				} else {
+					if (empty($filtreService)) {
+						$lesAnnonces = recherche_annonce_prix_lieu($filtrePrix, $filtreLieu);
+					} else if (empty($filtreLieu)) {
+						$lesAnnonces = recherche_annonce_service_prix($filtreService, $filtrePrix);
+					} else if (empty($filtrePrix)) {
+						$lesAnnonces = recherche_annonce_service_lieu($filtreService, $filtreLieu);
+					} else if (empty($filtrePrix) && empty($filtreLieu)) {
+						$lesAnnonces = recherche_annonce_service($filtreService);
+					} else if (empty($filtreService) && empty($filtreLieu)) {
+						$lesAnnonces = recherche_annonce_prix($filtrePrix);
+					} else if (empty($filtrePrix) && empty($filtreService)) {
+						$lesAnnonces = recherche_annonce_lieu($filtreLieu);
+					} else { ?>
                 <h3>Veuillez remplir au moins un champ</h3>
                 <?php 
 					header('Location: all_annonces.php');
+					}
 				}
 				foreach ($lesAnnonces as $annonce) {
 				?>
