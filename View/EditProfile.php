@@ -33,14 +33,14 @@
 		?>
         <div class="container">
             <?php require("menuProfile.php");?>
-                <form>
+                <form action="../Controler/modifier_profil.php" method ="post">
                     <button class="btn btn-primary btn-lg " value="valider" type="submit">Valider</button>
                     <div class="row">
                         <div class="col-xs-4">
 							<h1><?php echo $user['login'] ?></h1> </div>
                         <div class="col-xs-8">
                             <h3>Description :</h3>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
                         </div>
                     </div>
                     <h1>Mes services</h1>
@@ -51,10 +51,12 @@
 					?>
 					<div class="row">
 						<div class="col-xs-2">
-                        <p><?php $nomServ = get_nomService($service['idService']);
-								echo $nomServ ?></p>
-						<input type="checkbox" id="" value="">
-						<br/>
+                        <p><?php $idServ = $service['idService'];
+							$nomServ = get_nomService($idServ); 
+							echo $nomServ ?></p></div>
+						<div class="col-xs-4">
+							<input type="checkbox" name ="service[]" value = <?php echo $idServ ?> />
+							<br/>
 						</div>
 					</div>
 					<?php } ?>

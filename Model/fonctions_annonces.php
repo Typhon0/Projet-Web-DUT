@@ -99,7 +99,7 @@ function verifier_utilisateurs_dispos($service) {
 		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce';
 		$stmt = $bdd->prepare($query);
 		$stmt->execute();
-		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		$lesAnnonces = $stmt->fetchAll();
 		return $lesAnnonces;
 	}
 	

@@ -50,7 +50,7 @@
 	function get_all_services() {
 		include('config.php');
 		
-		$stmt = $bdd->prepare('SELECT idService FROM Service');
+		$stmt = $bdd->prepare('SELECT idService, nom FROM Service');
 		$stmt->execute();
 		$lesServices = $stmt->fetchAll();
 		return $lesServices;
@@ -61,6 +61,38 @@
 		
 		$stmt = $bdd->prepare('INSERT INTO UtilisateurService VALUES (?, ?)');
 		$stmt->bindValue(1, $idUser, PDO::PARAM_INT);
+		$stmt->bindValue(2, $idService, PDO::PARAM_INT);
+		$stmt->execute();
+		$stmt->closeCursor();
+		$stmt = NULL;
+	}
+	
+	function modifier_description($description) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('UPDATE Utilisateur SET description = ? WHERE idUtilisateur = ?');
+		$stmt->bindValue(1, $description, PDO::PARAM_STR);
+		$stmt->bindValue(2, $_SESSION['user_id'], PDO::PARAM_INT);
+		$stmt->execute();
+		$stmt->closeCursor();
+		$stmt = NULL;
+	}
+	
+	function supprimer_services($idUser) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('DELETE FROM UtilisateurService WHERE idUtilisateur = ?');
+		$stmt->bindValue(1, $idUser, PDO::PARAM_INT);
+		$stmt->execute();
+		$stmt->closeCursor();
+		$stmt = NULL;
+	}
+	
+	function modifier_service($idService) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('INSERT INTO UtilisateurService VALUES (?,?,1)');
+		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->bindValue(2, $idService, PDO::PARAM_INT);
 		$stmt->execute();
 		$stmt->closeCursor();
