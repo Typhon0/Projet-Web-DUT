@@ -38,6 +38,14 @@
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
+                                    
+                                    
+                                    <?php $annonces = get_annonces_postees();
+                                    
+                                    while($annonces) { ?>
+                                    
+                                    <?php echo $annonces['dgds']?>
+                                    
                                     <div id="listannonce" class="row">
                                         <a href="#">
                                             <div class="col-xs-3 col-sm-2 text-center no-padding">
@@ -53,6 +61,11 @@
                                             </div>
                                         </a>
                                     </div>
+                                    
+                                    <?php }>
+                                    
+                                    
+                                    
                                     <div id="listannonce" class="row">
                                         <a href="#">
                                             <div class="col-xs-3 col-sm-2 text-center no-padding">

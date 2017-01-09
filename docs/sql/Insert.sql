@@ -3,7 +3,7 @@ INSERT INTO Service(nom) VALUES ('Bricolage - Travaux'), ('Jardinage - Piscine')
 ('Enfants'), ('Animaux'), ('Informatique et web'), ('Photographie - Vidéo'), ('Animation - Evénements'), ('Cours- Formations'), 
 ('Administratif - Bureautique'), ('Mode - Santé - Bien être'), ('Sport - Partenaires'), ('Restaurant - Réception');
 
-INSERT INTO Utilisateur(login, email, mdp, description, dateNaiss, type) VALUES 
+INSERT INTO Utilisateur(login, email, mdp, description, dateNaiss, typeU) VALUES 
 ('Dorian', 'dorian@email.fr', 'mdp', 'Ceci est une description', '1997-12-10', 'type'), 
 ('Loic', 'loic@email.fr', 'mdp', 'Ceci est également une description', '1996-06-02', 'type');
 
