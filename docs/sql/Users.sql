@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Annonce, Ordonnance, Evenement, UtilisateurService, Service, Utilisateur;
+DROP TABLE IF EXISTS Message, Agenda, Annonce, Ordonnance, Evenement, UtilisateurService, Service, Utilisateur;
 
 CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
@@ -7,8 +7,7 @@ CREATE TABLE Utilisateur (
     mdp varchar(12) NOT NULL,
 	description text NOT NULL,
 	dateNaiss date NOT NULL,
-    type varchar(32) NOT NULL,
-	avatar varchar(100) collate latin1_general_ci
+    typeU varchar(32) NOT NULL
 );
 
 CREATE TABLE Agenda (
@@ -21,7 +20,7 @@ CREATE TABLE Agenda (
 CREATE TABLE Evenement (
 	idEvenement int AUTO_INCREMENT PRIMARY KEY,
 	dateheure timestamp NOT NULL,
-	resume varchar(255),
+	resumeE varchar(255),
 	idAgenda int NOT NULL,
 	FOREIGN KEY(idAgenda) REFERENCES Agenda(idAgenda) ON DELETE CASCADE
 );
@@ -70,11 +69,12 @@ Create Table Message (
 	Foreign key(destinataire) references Utilisateur(login) on delete cascade,
 	Foreign key(emetteur) references Utilisateur(login) on delete cascade
 );
+
 CREATE TABLE AnnonceSauv (
 	idUtilisateur int NOT NULL,
 	FOREIGN KEY(idUtilisateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
 	idAnnonce int NOT NULL,
 	FOREIGN KEY(idAnnonce) REFERENCES Annonce(idAnnonce) ON DELETE CASCADE,
-	Primary Key (idAnonce,idUtilisateur)
+	Primary Key (idAnnonce,idUtilisateur)
 	
 );
