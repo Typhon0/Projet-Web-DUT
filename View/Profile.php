@@ -28,15 +28,15 @@
     <?php require("menu.php");?>
         <!-- Page Content -->
 		<?php
-		include('Model/fonctions_profil.php');
+		include('../Model/fonctions_profil.php');
 		$user = get_user($_SESSION['username']);
-		$services = get_services($_SESSION['user_id');
+		$services = get_services($_SESSION['user_id']);
 		?>
 		<div class="container">
             <?php require("menuProfile.php");?> <a href="EditProfile.php" class="btn btn-primary btn-lg" role="button">Editer</a>
                 <div class="row">
                     <div class="col-xs-4">
-                        <h1><?php echo $user['pseudo'] ?></h1> </div>
+                        <h1><?php echo $user['login'] ?></h1> </div>
                     <div class="col-xs-8">
                         <h3>Description :</h3>
                         <p>
@@ -46,11 +46,13 @@
                 </div>
                 <h1>Mes services</h1>
 				<?php 
-				foreach ($lesService as $service) {
+				include('../Model/fonctions_annonces.php');
+				foreach ($services as $service) {
 				?>
                 <div class="row">
                     <div class="col-xs-2">
-                        <p><?php $service['nom'] ?></p>
+                        <p><?php $nomServ = get_nomService($service['idService']);
+							echo $nomServ ?></p>
                     </div>
                 </div>
 				<?php } ?>

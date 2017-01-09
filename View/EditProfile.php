@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,25 +27,37 @@
 <body>
     <?php require("menu.php");?>
         <!-- Page Content -->
+		<?php
+		include('../Model/fonctions_profil.php');
+		$user = get_user($_SESSION['username']);
+		?>
         <div class="container">
             <?php require("menuProfile.php");?>
                 <form>
                     <button class="btn btn-primary btn-lg " value="valider" type="submit">Valider</button>
                     <div class="row">
                         <div class="col-xs-4">
-                            <h1>Username</h1> </div>
+							<h1><?php echo $user['login'] ?></h1> </div>
                         <div class="col-xs-8">
                             <h3>Description :</h3>
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
                     </div>
                     <h1>Mes services</h1>
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <input type="checkbox" id="" value="">
-                            <label for=""> </label>
-                            <br> </div>
-                    </div>
+					<?php 
+						include('../Model/fonctions_annonces.php');
+						$services = get_all_services();
+						foreach ($services as $service) {
+					?>
+					<div class="row">
+						<div class="col-xs-2">
+                        <p><?php $nomServ = $service['nom'];
+							echo $nomServ ?></p>
+						<input type="checkbox" id="" value="">
+						<br/>
+						</div>
+					</div>
+					<?php } ?>
                 </form>
         </div>
         <!-- /.container -->

@@ -25,9 +25,7 @@
     </head>
 
     <body>
-        <?php 
-    session_start();
-    require("View/menu.php"); ?>
+        <?php require("View/menu.php"); ?>
             <!-- Page Content -->
             <div class="container">
                 <div class="row">

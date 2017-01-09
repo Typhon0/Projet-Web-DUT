@@ -1,5 +1,5 @@
 <?php 
-	public function get_pseudo_user($idUser)
+	function get_pseudo_user($idUser)
 	{
 		include('config.php');
 		try{
@@ -19,7 +19,7 @@
 		
 	}
 	
-	public function get_user($pseudo)
+	function get_user($pseudo)
 	{
 		include('config.php');
 		try{
@@ -38,12 +38,21 @@
 		
 	}
 	
-	public function get_services($idUser) {
+	function get_services($idUser) {
 		include('config.php');
 		
 		$stmt = $bdd->prepare('SELECT idService FROM UtilisateurService WHERE disponible = 1');
 		$stmt->execute();
 		$lesServices = $stmt->fetchAll();
-		return $lesAServices;
+		return $lesServices;
+	}
+	
+	function get_all_services() {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('SELECT nom FROM Service');
+		$stmt->execute();
+		$lesServices = $stmt->fetchAll();
+		return $lesServices;
 	}
 ?>
