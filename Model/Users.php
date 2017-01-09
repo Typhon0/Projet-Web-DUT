@@ -26,35 +26,31 @@ class Users
 	{
 		include('config.php');
 		//preparation de la requête pour ajouter
-		$req = $bdd->prepare('INSERT INTO Utilisateur (login,email,mdp,description,dateNaiss,type) VALUES (:login, :email, :mdp, :description, :dateNaiss, :type)');
+		$req = $bdd->prepare('INSERT INTO Utilisateur (login,email,mdp,description,dateNaiss,typeU) VALUES (?, ?, ?, ?, ?, ?)');
 
 		// test de présence du login ou de l'email dans la bdd
-		$error = $users->find_user($users);
-		if(!empty($error))
-			return $error ;
+		//$error = $users->find_user($users);
+		//if(!empty($error))
+			//return $error ;
 
 
-		// tentative d'ajout dans la base de données avec les arguments
-		if($req->execute(array('login' => $users->pseudo,
-							'email' => $users->email,
-							'mdp' => $users->mdp,
-							'description' => $users->desc,
-							'dateNaiss' => $users->date_de_naissance,
-							'type' => $users->type,
-							)
-						)
-			)
-			{
+			// tentative d'ajout dans la base de données avec les arguments
+		$req->bindValue(1, $users->pseudo, PDO::PARAM_STR);
+        $req->bindValue(2, $users->email, PDO::PARAM_STR);	
+        $req->bindValue(3, $users->mdp, PDO::PARAM_STR);	
+        $req->bindValue(4, $users->desc, PDO::PARAM_STR);	
+        $req->bindValue(5, $users->date_de_naissance, PDO::PARAM_STR);	
+        $req->bindValue(6, $users->type, PDO::PARAM_STR);	
+
+      $req -> execute() or die("Error INSERT");
+        
 				$us = $users->get_user($users->pseudo) ;
 				$id_user = $us['idUtilisateur'];
-				$req1 = $bdd->prepare('INSERT INTO agenda (idUtilisateur) VALUES (:idUtilisateur)');
+				$req1 = $bdd->prepare('INSERT INTO Agenda (idUtilisateur) VALUES (:idUtilisateur)');
 				$req1->execute(array('idUtilisateur' => $id_user,));	
-				return 'true' ;
-			}
-		
-		else
-			return 'false' ;
-	}
+        return 'true';
+			
+    }
 
 	public function find_user(Users $users)
 	{

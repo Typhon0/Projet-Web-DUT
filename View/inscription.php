@@ -23,29 +23,20 @@
 
 <body>
     <div class="container">
-        <form action="../Controler/inscription_confirmation.php" method="post" class="form-signin">
+        <form method="POST" action="../Controler/inscription_confirmation.php" class="form-signin">
             <h2 class="form-signin-heading">Inscription</h2>
             <label for="inputPseudo" class="sr-only">Pseudo</label>
             <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" required>
-
             <label for="inputEmail" class="sr-only">Email</label>
             <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
-            
             <label for="inputPassword" class="sr-only">Mot de passe</label>
             <input type="password" name="mdp" class="form-control" placeholder="Mot de passe" required>
-            
             <label for="inputPseudo" class="sr-only">Description</label>
-          <!--  <textarea class="form-control" rows="3" name="desc" placeholder="Description" required></textarea>-->
-            	<p><label>description : </label><input type="text" name="desc" required/></p>
-
-            
+            <textarea class="form-control" rows="3" name="desc" placeholder="Description" required></textarea>
             <label for="inputPseudo" class="sr-only">Date de naissance</label>
             <input type="text" name="ddn" class="form-control" placeholder="Date de naissance" required>
-            
             <label for="inputPseudo" class="sr-only">Type</label>
             <input type="text" name="type" class="form-control" placeholder="Type" required>
-            
-        
             <button class="btn btn-lg btn-primary btn-block" value="valider" type="submit">Valider</button>
         </form>
     </div>
