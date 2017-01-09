@@ -50,9 +50,20 @@
 	function get_all_services() {
 		include('config.php');
 		
-		$stmt = $bdd->prepare('SELECT nom FROM Service');
+		$stmt = $bdd->prepare('SELECT idService FROM Service');
 		$stmt->execute();
 		$lesServices = $stmt->fetchAll();
 		return $lesServices;
+	}
+	
+	function add_service($idUser, $idService) {
+		include('config.php');
+		
+		$stmt = $bdd->prepare('INSERT INTO UtilisateurService VALUES (?, ?)');
+		$stmt->bindValue(1, $idUser, PDO::PARAM_INT);
+		$stmt->bindValue(2, $idService, PDO::PARAM_INT);
+		$stmt->execute();
+		$stmt->closeCursor();
+		$stmt = NULL;
 	}
 ?>
