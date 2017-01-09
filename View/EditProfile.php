@@ -51,8 +51,8 @@
 					?>
 					<div class="row">
 						<div class="col-xs-2">
-                        <p><?php $nomServ = $service['nom'];
-							echo $nomServ ?></p>
+                        <p><?php $nomServ = get_nomService($service['idService']);
+								echo $nomServ ?></p>
 						<input type="checkbox" id="" value="">
 						<br/>
 						</div>
