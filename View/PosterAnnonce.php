@@ -23,7 +23,7 @@
 
 <body>
     <div class="container">
-        <form class="form-signin" action="gestionAnnonce.php" method="post">
+        <form class="form-signin" action="../Controler/PosterAnnonce.php" method="post">
             <h2 class="form-signin-heading">Poster une annonce</h2>
             <p>Titre :
                 <input class="form-control" type="text" name="titre" /> </p>
@@ -45,7 +45,7 @@
                 <OPTION>Restauration - Réception</OPTION>
             </SELECT>
             <p> Expliquez votre besoin :</br>
-                <TEXTAREA class="form-control" name="message" rows=4 cols=40>Description du service :</TEXTAREA>
+                <TEXTAREA class="form-control" name="message" rows=4 cols=40 placeholder="Description du service :"></TEXTAREA>
                 <p>Lieu :
                     <input class="form-control" type="text" name="lieu" /> </p>
                 <p>Prix global :

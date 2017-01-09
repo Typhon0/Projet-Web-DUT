@@ -1,3 +1,6 @@
 <?php
-	$bdd = new PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '') or die(mysql_error());
-?> 
+
+
+
+	$bdd = new PDO('mysql:host=localhost;dbname=ProjetWebDUT;charset=utf8', 'ProjetWebDUT', 'sVdWd4gt6VL01mOW') or die(mysql_error());
+?>

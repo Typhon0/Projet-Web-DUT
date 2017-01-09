@@ -101,7 +101,7 @@ class Users
 			$req->execute(array($email));
 			if($donnees = $req->fetch())
 			{
-				return $donnees;
+                return $donnees;
 			}
 		} catch(Exception $e)
 		{
@@ -110,5 +110,5 @@ class Users
 		
 	}
 }
-}
+
 ?>

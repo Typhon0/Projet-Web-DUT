@@ -1,11 +1,17 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 function connection(){
+    
 	
 	$login = $_POST["email"];
 	$pass = $_POST["mdp"];
 	include_once('../Model/Users.php');
-	
+
 	$usr = Users::get_info_connect_user($login);
+    echo $usr['email'];
 	if ($usr['mdp'] == $pass) {
 		echo "connecté" ;
 		$_SESSION['user_id'] = $usr['idUtilisateur'];

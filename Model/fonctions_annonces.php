@@ -20,6 +20,7 @@ function verifier_utilisateurs_dispos($service) {
 		
 		$query = 'INSERT INTO Annonce (demandeur, titre, service, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
 		$stmt = $bdd->prepare($query);
+
 		 
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->bindValue(2, $titre, PDO::PARAM_STR);
