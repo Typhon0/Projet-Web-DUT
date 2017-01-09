@@ -15,7 +15,7 @@ class Messagerie
 	{
 		include('config.php');
 		try {
-			$req = $bdd->prepare(' SELECT * FROM message WHERE destinataire = ? AND lu!=2 ORDER by date_envoi DESC ;');
+			$req = $bdd->prepare(' SELECT * FROM Message WHERE destinataire = ? AND lu!=2 ORDER by date_envoi DESC ;');
 			$req->execute(array($users));
 			$donnees = $req->fetchall();
 			return $donnees ;
@@ -32,7 +32,7 @@ class Messagerie
 	{
 		include('config.php');
 		try {
-			$req = $bdd->prepare(' SELECT * FROM message WHERE destinataire = ? AND lu=1 ;');
+			$req = $bdd->prepare(' SELECT * FROM Message WHERE destinataire = ? AND lu=1 ;');
 			$req->execute(array($users));
 			$donnees = $req->fetchall();
 			return $donnees ;
@@ -50,7 +50,7 @@ class Messagerie
 	{
 		include('config.php');
 		try {
-			$req = $bdd->prepare(' SELECT * FROM message WHERE idMessage = ?');
+			$req = $bdd->prepare(' SELECT * FROM Message WHERE idMessage = ?');
 			$req->execute(array($idMessage));
 			$donnees = $req->fetch();
 			return $donnees ;
@@ -67,7 +67,7 @@ class Messagerie
 	{
 		include('config.php');
 		try {
-			$req = $bdd->prepare('UPDATE message SET lu = 1 WHERE idMessage = ?');
+			$req = $bdd->prepare('UPDATE Message SET lu = 1 WHERE idMessage = ?');
 			$req->execute(array($idMessage));
 		}catch (Exception $e)
 		{

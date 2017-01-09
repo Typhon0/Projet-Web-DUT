@@ -1,8 +1,10 @@
+<?php session_start(); ?>
     <!DOCTYPE html >
     <html>
 
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -18,58 +20,45 @@
                 <?php require('menuProfile.php');?>
                     <?php
 //On verifie que lutilisateur est connecte
-if(isset($_SESSION['login']))
+if($_SESSION['logged']=1)
 {
 	include('../Model/Messagerie.php');
-	$liste_non_lu = Messagerie::get_liste_message_non_lu("wizou");
-	$liste_lu = Messagerie::get_liste_message_lu("wizou");
+	$liste_non_lu = Messagerie::get_liste_message_non_lu($_SESSION['username']);
+	$liste_lu = Messagerie::get_liste_message_lu($_SESSION['username']);
 	include('../Model/Users.php');
-	$users = Users::get_user($_SESSION['login']);
-	//$test = $liste_non_lu[0];
-	//echo 'ptn'.$test['contenu'] ;
-//On affiche la liste des messages lus et non lus de l'utilisateur 
-//$req1 = mysql_query('select m1.idMessage, m1.destinataire, m1.emetteur, count(m2.idMessage) as reps,m1.contenu,m1.objet,m1.lu,m1.date_envoi, Utilisateur.idUtilisateur as userid, Utilisateur.login from Message as m1, Message as m2,Utilisateur where ((m1.emetteur="'.$_SESSION['userid'].'" and m1.lu=false and Utilisateur.idUtilisateur=m1.destinataire) or (m1.destinataire="'.$_SESSION['userid'].'" and m1.lu=false and Utilisateur.idUtilisateur=m1.emetteur)) and m2.idMessage=m1.idMessage group by m1.idMessage order by m1.idMessage desc');
-
-//$req2 = mysql_query('select m1.idMessage, m1.destinataire, m1.emetteur, count(m2.idMessage) as reps,m1.contenu,m1.objet,m1.lu,m1.date_envoi, Utilisateur.idUtilisateur as userid, Utilisateur.login from Message as m1, Message as m2,Utilisateur where ((m1.emetteur="'.$_SESSION['userid'].'" and m1.lu=true and Utilisateur.idUtilisateur=m1.destinataire) or (m1.destinataire="'.$_SESSION['userid'].'" and m1.lu=true and Utilisateur.idUtilisateur=m1.emetteur)) and m2.idMessage=m1.idMessage group by m1.idMessage order by m1.idMessage desc');
+	$users = Users::get_user($_SESSION['username']);
                 
-               ?> 
-                
-                    <div class="row">
-                        <div class="col-sm-3 col-md-2"> </div>
-                        <div class="col-sm-9 col-md-10">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh"> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
+               ?>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2"> </div>
+                            <div class="col-sm-9 col-md-10">
+                                <div class="pull-right"> <a href="http://localhost/Projet-Web-DUT/View/messagerie.php" type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh"> &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</a> </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3 col-md-2"> <a href="#" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Nouveau</a>
-                            <hr>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#"><span class="badge pull-right"><?php echo count($liste_non_lu) ; ?></span> Boîte de réception </a> </li>
-                                <li><a href="#">Envoyé</a></li>
-                                <li><a href="#">Corbeille</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-9 col-md-10">
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-							
-<?php 
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2"> <a href="http://localhost/Projet-Web-DUT/View/newMessage.php" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Nouveau</a>
+                                <hr>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="active"><a href="#"><span class="badge pull-right"><?php echo count($liste_non_lu) ; ?></span> Boîte de réception </a> </li>
+                                    <!--<li><a href="#">Envoyé</a></li>
+                                    <li><a href="#">Corbeille</a></li>-->
+                                </ul>
+                            </div>
+                            <div class="col-sm-9 col-md-10">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <?php 
 foreach($liste_non_lu as $mess)
 {
 	$emetteur = Users::get_user($mess['emetteur']);
-?>							
-                                <div class="tab-pane fade in active" id="home">
-                                    <div class="list-group">
-                                        <a href="Lire_Message.php?id=<?php echo $mess['idMessage']; ?>" class="list-group-item">
-											<span class="glyphicon glyphicon-star-empty">
-											</span>
-											<span class="name" style="min-width: 120px; display: inline-block;">	
+?>
+                                        <div class="tab-pane fade in active" id="home">
+                                            <div class="list-group">
+                                                <a href="Lire_Message.php?id=<?php echo $mess['idMessage']; ?>" class="list-group-item"> <span class="glyphicon glyphicon-star-empty">
+											</span> <span class="name" style="min-width: 120px; display: inline-block;">	
 												<?php echo $mess['emetteur']; ?> 
-											</span> 
-											<span class="">
+											</span> <span class="">
 												<?php if($mess['lu']==0)
 												{
 													?> <b> <?php
@@ -80,47 +69,38 @@ foreach($liste_non_lu as $mess)
 													echo $mess['objet'];
 												}
 												?>
-											</span> 												
-											<span class="text-muted" style="font-size: 11px;">
+											</span> <span class="text-muted" style="font-size: 11px;">
 											- More content here
-								</span> 
-								<span class="badge">
+								</span> <span class="badge">
 								<?php echo $mess['date_envoi'] ; ?>
-								</span>
-								<span class="pull-right">
+								</span> <span class="pull-right">
 								<span class="glyphicon glyphicon-paperclip">
-                                </span>
-								</span>
-                                        </a>
-                                    </div>
+                                </span> </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <?php }
+?>
+                                            <div class="tab-pane fade in" id="profile">
+                                                <div class="list-group">
+                                                    <div class="list-group-item"> <span class="text-center">This tab is empty.</span> </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in" id="messages"> ...</div>
+                                            <div class="tab-pane fade in" id="settings"> This tab is empty.</div>
                                 </div>
-<?php }
-?>								
-								
-                                <div class="tab-pane fade in" id="profile">
-                                    <div class="list-group">
-                                        <div class="list-group-item"> <span class="text-center">This tab is empty.</span> </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade in" id="messages"> ...</div>
-                                <div class="tab-pane fade in" id="settings"> This tab is empty.</div>
+                                <div class="row-md-12"> </div>
                             </div>
-                            <div class="row-md-12"> </div>
                         </div>
-                    </div>
             </div>
-
-
-                      
-                  
-                                <?php
+            <?php
 }
 else
 {
         echo 'Non connecté';
 }
 ?>
-            <div>
+                <div>
     </body>
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
