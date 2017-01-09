@@ -38,49 +38,41 @@
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    
-                                    
                                     <?php $annonces = get_annonces_postees();
                                     
                                     while($annonces) { ?>
-                                    
-                                    <?php echo $annonces['dgds']?>
-                                    
-                                    <div id="listannonce" class="row">
-                                        <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                                <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
-                                            </div>
-                                            <div class="col-xs-9 col-sm-10">
-                                                <h4 class="title">
+                                        <?php echo $annonces['dgds']?>
+                                            <div id="listannonce" class="row">
+                                                <a href="#">
+                                                    <div class="col-xs-3 col-sm-2 text-center no-padding">
+                                                        <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-10">
+                                                        <h4 class="title">
                                             Location Scanner                                        </h4>
-                                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                <div class="budget"> Budget : <b>
+                                                        <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
+                                                        <div class="budget"> Budget : <b>
                                             10€                                            </b> </div>
-                                                <div class="duration"> Durée : <b>1 jour</b> </div>
+                                                        <div class="duration"> Durée : <b>1 jour</b> </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </a>
-                                    </div>
-                                    
-                                    <?php }>
-                                    
-                                    
-                                    
-                                    <div id="listannonce" class="row">
-                                        <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                                <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
-                                            </div>
-                                            <div class="col-xs-9 col-sm-10">
-                                                <h4 class="title">
+                                            <?php } ?>
+                                                <div id="listannonce" class="row">
+                                                    <a href="#">
+                                                        <div class="col-xs-3 col-sm-2 text-center no-padding">
+                                                            <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-10">
+                                                            <h4 class="title">
                                             Location Scanner                                        </h4>
-                                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                <div class="budget"> Budget : <b>
+                                                            <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
+                                                            <div class="budget"> Budget : <b>
                                             10€                                            </b> </div>
-                                                <div class="duration"> Durée : <b>1 jour</b> </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                                            <div class="duration"> Durée : <b>1 jour</b> </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +84,7 @@
                                 <div class="col-xs-12">
                                     <div id="listannonce" class="row">
                                         <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                            </div>
+                                            <div class="col-xs-3 col-sm-2 text-center no-padding"> </div>
                                             <div class="col-xs-9 col-sm-10">
                                                 <h4 class="title">
                                             Location Scanner                                        </h4>
@@ -106,8 +97,7 @@
                                     </div>
                                     <div id="listannonce" class="row">
                                         <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding">
-                                            </div>
+                                            <div class="col-xs-3 col-sm-2 text-center no-padding"> </div>
                                             <div class="col-xs-9 col-sm-10">
                                                 <h4 class="title">
                                             Location Scanner                                        </h4>
