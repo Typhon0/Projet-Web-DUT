@@ -12,7 +12,7 @@
 		include('Config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE service = (SELECT idService FROM Service WHERE nom = ?)');
-		$stmt->bindValues(1, $service, PDO::PARAM_STR);
+		$stmt->bindValue(1, $service, PDO::PARAM_STR);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		return $result;
@@ -32,7 +32,7 @@
 		include('Config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE prix >= ?');
-		$stmt->bindValues(1, $min, PDO::PARAM_INT);
+		$stmt->bindValue(1, $min, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		return $result;
@@ -51,7 +51,7 @@
 		include('Config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE lieu = ?');
-		$stmt->bindValues(1, $lieu, PDO::PARAM_STR);
+		$stmt->bindValue(1, $lieu, PDO::PARAM_STR);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		return $result;

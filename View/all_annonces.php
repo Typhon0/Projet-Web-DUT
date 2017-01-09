@@ -35,13 +35,27 @@
                     <div class="row">
                         <div class="col-xs-3"></div>
                         <div class="col-xs-6">
-                            <form>
+                            <form action="resultats_recherche.php" method="post" >
                                 <SELECT class="form-control" name="service" size="1">
-                                    <OPTION>Option 1</OPTION>
-                                    <OPTION>Option 2</OPTION>
+									<OPTION></OPTION>
+                                    <OPTION>Bricolage - Travaux</OPTION>
+									<OPTION>Jardinage - Piscine</OPTION>
+									<OPTION>Déménagement - Manutention</OPTION>
+									<OPTION>Services véhiculés</OPTION>
+									<OPTION>Services à la personne</OPTION>
+									<OPTION>Enfants</OPTION>
+									<OPTION>Animaux</OPTION>
+									<OPTION>Informatique et web</OPTION>
+									<OPTION>Photographie - Vidéo</OPTION>
+									<OPTION>Animation - Evenements</OPTION>
+									<OPTION>Cours - Formations</OPTION>
+									<OPTION>Administratif - Bureautique </OPTION>
+									<OPTION>Mode - Santé - Bien être</OPTION>
+									<OPTION>Sport-Partenaires</OPTION>
+									<OPTION>Restauration - Réception</OPTION>
                                 </SELECT>
-                                <input class="form-control" type="text">
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name ="prixMin">
+                                <input class="form-control" type="text" name = "lieu">
                                 <button class="btn btn-primary pull-right" value="submit" type="submit">Rechercher</button>
                             </form>
                         </div>
