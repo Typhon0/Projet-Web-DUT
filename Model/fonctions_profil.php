@@ -3,7 +3,7 @@
 	{
 		include('config.php');
 		try{
-			$req = $bdd->prepare('select * from utilisateur where idUtilisateur = ?');
+			$req = $bdd->prepare('select * from Utilisateur where idUtilisateur = ?');
 			$req->bindValue(1, $idUser, PDO::PARAM_INT);
 			$req->execute();
 			if($donnees = $req->fetch())
@@ -23,7 +23,7 @@
 	{
 		include('config.php');
 		try{
-			$req = $bdd->prepare('select * from utilisateur where login = ?');
+			$req = $bdd->prepare('select * from Utilisateur where login = ?');
 			$req->execute(array($pseudo));
 			if($donnees = $req->fetch())
 			{
