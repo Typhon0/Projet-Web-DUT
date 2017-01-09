@@ -9,7 +9,7 @@
 	}
 	
 	function recherche_annonce_service($service) {
-		include('Config.php');
+		include('config.php');
 		
 		$stmt = $bdd->prepare('SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE service = (SELECT idService FROM Service WHERE nom = ?)');
 		$stmt->bindValue(1, $service, PDO::PARAM_STR);

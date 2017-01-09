@@ -36,6 +36,8 @@
 				$filtreLieu = $_POST['lieu'];
 				if (!empty($filtreService)) {
 					$lesAnnonces = recherche_annonce_service($filtreService);
+             
+
 				} else if (!empty($filtrePrix)) {
 					$lesAnnonces = recherche_annonce_prix($filtrePrix);
 				} else if (!empty($filtreLieu)) {
