@@ -27,7 +27,8 @@
     <?php require("menu.php");?>
         <!-- Page Content -->
 		<?php
-		include_once('../Model/fonctions_annonces.php');
+		include('../Model/fonctions_annonces.php');
+		include('../Model/config.php');
 		?>
         <div class="container">
             <?php require("menuProfile.php");?>
@@ -74,9 +75,10 @@
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    <?php $idAnnonces = get_annonces_sauvegardees() or die("Erreur");
-                                    foreach ($idAnnonces as $idAnnonce) { 
-										$annonce = get_full_annonce($idAnnonce) or die("Erreur2");
+                                    <?php $idAnnonces = get_annonces_sauvegardees();
+                                    foreach ($idAnnonces as $id) { 		
+										$annonceE = get_full_annonce($id['idAnnonce']);					
+										foreach ($annonceE as $ae) {
 									?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
@@ -85,20 +87,21 @@
                                                     </div>
                                                     <div class="col-xs-9 col-sm-10">
 														<h4 class="title">
-														<?php echo $annonce['titre'] ?>                                       </h4>
+														<?php echo $ae['titre'] ?>                                       </h4>
 														<div class="username"> Type de service : <span class="capitalize firstname">
-														<?php $service = get_nomService($annonce['service']);
+														<?php $service = get_nomService($ae['service']);
 																echo $service ?></span></div>
 														<div class="username"> Utilisateur : <span class="capitalize firstname">
-														<?php $username = get_username_demandeur($annonce['demandeur']);
+														<?php $username = get_username_demandeur($ae['demandeur']);
 																echo $username ?></span></div>
 														<div class="budget"> Budget : <b>
-														<?php echo $annonce['prix'] ?> €</b> </div>
+														<?php echo $ae['prix'] ?> €</b> </div>
 														<div class="duration"> Lieu : <b>
-														<?php echo $annonce['lieu'] ?> </b> </div>
+														<?php echo $ae['lieu'] ?> </b> </div>
 													</div>
                                                 </a>
                                             </div>
+										<?php } ?>
                                     <?php } ?>
                                 </div>
                             </div>

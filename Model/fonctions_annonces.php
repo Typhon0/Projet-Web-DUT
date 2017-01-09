@@ -71,8 +71,7 @@ function verifier_utilisateurs_dispos($service) {
 	}
 	
 	function get_full_annonce($idAnnonce) {
-		include_once('config.php');
-		include_once('Annonce.php');
+		include('config.php');
 		
 		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE idAnnonce = ?';
 		$stmt = $bdd->prepare($query);

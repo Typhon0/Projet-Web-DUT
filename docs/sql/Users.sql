@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS Message, Agenda, Annonce, Ordonnance, Evenement, UtilisateurService, Service, Utilisateur;
+DROP TABLE IF EXISTS Message, Annonce, Ordonnance, Evenement, UtilisateurService, Service, Agenda, Utilisateur;
 
 CREATE TABLE Utilisateur (
 	idUtilisateur int AUTO_INCREMENT PRIMARY KEY,
-    login varchar(32),
+    login varchar(32) NOT NULL UNIQUE,
     email varchar(32) NOT NULL UNIQUE,
     mdp varchar(12) NOT NULL,
 	description text NOT NULL,
@@ -58,16 +58,16 @@ CREATE TABLE Annonce (
 	message text NOT NULL
 );
 
-Create Table Message (
+CREATE TABLE Message (
 	idMessage int AUTO_INCREMENT PRIMARY KEY,
-	destinataire varchar(128) NOT NULL,
-	emetteur varchar(128) NOT NULL,
+	destinataire varchar(32) NOT NULL,
+	FOREIGN KEY(destinataire) REFERENCES Utilisateur(login) ON DELETE CASCADE,
+	emetteur varchar(32) NOT NULL,
+	FOREIGN KEY(emetteur) REFERENCES Utilisateur(login) ON DELETE CASCADE,
 	contenu text NOT NULL,	
 	objet varchar(128) NOT NULL,
 	lu boolean NOT NULL,	
-	date_envoi timestamp NOT NULL,
-	Foreign key(destinataire) references Utilisateur(login) on delete cascade,
-	Foreign key(emetteur) references Utilisateur(login) on delete cascade
+	date_envoi timestamp NOT NULL
 );
 
 CREATE TABLE AnnonceSauv (
@@ -75,6 +75,6 @@ CREATE TABLE AnnonceSauv (
 	FOREIGN KEY(idUtilisateur) REFERENCES Utilisateur(idUtilisateur) ON DELETE CASCADE,
 	idAnnonce int NOT NULL,
 	FOREIGN KEY(idAnnonce) REFERENCES Annonce(idAnnonce) ON DELETE CASCADE,
-	Primary Key (idAnnonce,idUtilisateur)
+	PRIMARY KEY (idAnnonce,idUtilisateur)
 	
 );
