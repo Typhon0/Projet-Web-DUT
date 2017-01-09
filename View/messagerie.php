@@ -18,7 +18,6 @@
                 <?php require('menuProfile.php');?>
                     <?php
 //On verifie que lutilisateur est connecte
-$_SESSION['login'] = 'wizou';
 if(isset($_SESSION['login']))
 {
 	include('../Model/Messagerie.php');

@@ -16,8 +16,6 @@ include('../Model/config.php');
 	
 	include('../Model/Messagerie.php');
 	$msg = Messagerie::get_message($_GET['id']);
-	$_SESSION['id'] = 1;
-	$_SESSION['login']= 'wizou' ;
 	if(isset($_SESSION['id']))
 	{
 		if($_SESSION['login'] == $msg['destinataire'])
