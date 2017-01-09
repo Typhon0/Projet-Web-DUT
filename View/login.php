@@ -27,22 +27,25 @@
   </head>
 
   <body>
+	<div class="container">
+				<h2 class="form-signin-heading">Inscription</h2>
+				
+				<form action="../Controler/Connexion.php" method="post" class="form-signin">
 
-    <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Se connecter</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <a href="inscription.php">S'inscrire</a>
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
-      </form>
+					<label for="inputEmail" class="sr-only">Email address</label>
+					<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input type="password" id="inputPassword" name="mdp" class="form-control" placeholder="Password" required>
+			
+					<div class="checkbox">
+					<label>
+						<a href="inscription.php">S'inscrire</a>
+					</label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" value="valider" type="submit">Valider</button>
+				</form>
+		</div>
+  
 
     </div> <!-- /container -->
 
