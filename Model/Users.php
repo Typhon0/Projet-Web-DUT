@@ -93,5 +93,22 @@ class Users
 		}
 		
 	}
+	public function get_info_connect_user($email)
+	{
+		include('config.php');
+		try{
+			$req = $bdd->prepare('select * from utilisateur where email = ?');
+			$req->execute(array($email));
+			if($donnees = $req->fetch())
+			{
+				return $donnees;
+			}
+		} catch(Exception $e)
+		{
+			echo 'erreur :'.$e->getMessage();
+		}
+		
+	}
+}
 }
 ?>
