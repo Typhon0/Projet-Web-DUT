@@ -49,9 +49,9 @@
                                             <?php echo $annonce['titre'] ?>                                       </h4>
                                 <div class="username"> <span class="capitalize firstname">
 											<?php $username = get_username_demandeur($annonce['demandeur']);
-													echo $username ?></span> - posté aujourd'hui, à 09:59 </div>
+													echo $username ?></span></div>
                                 <div class="budget"> Budget : <b>
-                                            <?php echo $annonce['prix'] ?> </b> </div>
+                                            <?php echo $annonce['prix'] ?> €</b> </div>
                                 <div class="duration"> Lieu : <b>
 											<?php echo $annonce['lieu'] ?> </b> </div>
                             </div>

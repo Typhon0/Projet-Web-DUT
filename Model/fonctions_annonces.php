@@ -18,7 +18,7 @@ function verifier_utilisateurs_dispos($service) {
 	function poster_annonce($titre, $service, $lieu, $prix, $message) {
 		include_once('config.php');
 		
-		$query = 'INSERT INTO Annonce (demandeur, titre, catService, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
+		$query = 'INSERT INTO Annonce (demandeur, titre, service, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
 		$stmt = $bdd->prepare($query);
 		 
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
