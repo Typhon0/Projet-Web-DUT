@@ -10,7 +10,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li> <a href="#">Accueil</a> </li>
+                    <li> <a href="http://localhost/Projet-Web-DUT">Accueil</a> </li>
                     <li> <a href="#">Annonce</a> </li>
                     <li> <a href="#">Mon agenda</a> </li>
                     <li> <a href="#">Forum</a> </li>
@@ -22,10 +22,10 @@
                     </li>
                 </ul>
                 <?php if($_SESSION['logged']==0){?>
-                    <li><a href="View/login.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">Login</a> </li>
+                    <li><a href="http://localhost/Projet-Web-DUT/View/login.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">Login</a> </li>
                     <?php }else if($_SESSION['logged']==1){?>
                         <li>
-                            <a href="View/Profile.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
+                            <a href="http://localhost/Projet-Web-DUT/View/Profile.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
                                 <?php echo $_SESSION['username']?>
                             </a> <a href="./Controler/logout.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">
                               Logout
