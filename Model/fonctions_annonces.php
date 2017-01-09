@@ -49,8 +49,7 @@ function verifier_utilisateurs_dispos($service) {
 	}
 	
 	function get_annonces_postees() {
-		include_once('config.php');
-		include_once('Annonce.php');
+		include('config.php');
 		
 		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE demandeur = ?';
 		$stmt = $bdd->prepare($query);
@@ -61,19 +60,30 @@ function verifier_utilisateurs_dispos($service) {
 	}
 	
 	function get_annonces_sauvegardees() {
-		include_once('config.php');
-		include_once('Annonce.php');
+		include('config.php');
 		
-		$query = 'SELECT titre, service, lieu, prix, message FROM AnnonceSauv WHERE idUtilisateur = ?';
+		$query = 'SELECT idAnnonce FROM AnnonceSauv WHERE idUtilisateur = ?';
 		$stmt = $bdd->prepare($query);
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->execute();
-		$lesAnnonces = $stmt->fetchAll(PDO::FETCH_CLASS, "Annonce");
+		$lesAnnonces = $stmt->fetchAll();
+		return $lesAnnonces;
+	}
+	
+	function get_full_annonce($idAnnonce) {
+		include_once('config.php');
+		include_once('Annonce.php');
+		
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce WHERE idAnnonce = ?';
+		$stmt = $bdd->prepare($query);
+		$stmt->bindValue(1, $idAnnonce, PDO::PARAM_INT);
+		$stmt->execute();
+		$lesAnnonces = $stmt->fetchAll();
 		return $lesAnnonces;
 	}
 	
 	function delete_annonce($idAnnonce) {
-		include_once('config.php');
+		include('config.php');
 		
 		$query = 'DELETE FROM Annonce WHERE idAnnonce = ?';
 		$stmt = $bdd->prepare($query);

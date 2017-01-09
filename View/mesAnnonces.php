@@ -27,8 +27,7 @@
     <?php require("menu.php");?>
         <!-- Page Content -->
 		<?php
-		include_once('Model/fonctions_annonces.php');
-		$lesAnnonces = get_annonces_postees();
+		include_once('../Model/fonctions_annonces.php');
 		?>
         <div class="container">
             <?php require("menuProfile.php");?>
@@ -42,61 +41,65 @@
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    <?php $annonces = get_annonces_postees();
-                                    
-                                    foreach ($annonces as $annonce) { ?>
-                                        <?php echo $annonce['dgds']?>
+                                    <?php $annoncesP = get_annonces_postees();
+                                    foreach ($annoncesP as $annonce) { ?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
                                                     <div class="col-xs-3 col-sm-2 text-center no-padding">
                                                         <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
                                                     </div>
                                                     <div class="col-xs-9 col-sm-10">
-                                                        <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                                        <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                        <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                                        <div class="duration"> Durée : <b>1 jour</b> </div>
-                                                    </div>
+														<h4 class="title">
+														<?php echo $annonce['titre'] ?>                                       </h4>
+														<div class="username"> Type de service : <span class="capitalize firstname">
+														<?php $service = get_nomService($annonce['service']);
+																echo $service ?></span></div>
+														<div class="username"> Utilisateur : <span class="capitalize firstname">
+														<?php $username = get_username_demandeur($annonce['demandeur']);
+																echo $username ?></span></div>
+														<div class="budget"> Budget : <b>
+														<?php echo $annonce['prix'] ?> €</b> </div>
+														<div class="duration"> Lieu : <b>
+														<?php echo $annonce['lieu'] ?> </b> </div>
+													</div>
                                                 </a>
                                             </div>
-                                            <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
-                        <h3>Annonce enregistrées</h3>
+                        <h3>Annonces enregistrées</h3>
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    <div id="listannonce" class="row">
-                                        <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding"> </div>
-                                            <div class="col-xs-9 col-sm-10">
-                                                <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                                <div class="duration"> Durée : <b>1 jour</b> </div>
+                                    <?php $idAnnonces = get_annonces_sauvegardees() or die("Erreur");
+                                    foreach ($idAnnonces as $idAnnonce) { 
+										$annonce = get_full_annonce($idAnnonce) or die("Erreur2");
+									?>
+                                            <div id="listannonce" class="row">
+                                                <a href="#">
+                                                    <div class="col-xs-3 col-sm-2 text-center no-padding">
+                                                        <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-10">
+														<h4 class="title">
+														<?php echo $annonce['titre'] ?>                                       </h4>
+														<div class="username"> Type de service : <span class="capitalize firstname">
+														<?php $service = get_nomService($annonce['service']);
+																echo $service ?></span></div>
+														<div class="username"> Utilisateur : <span class="capitalize firstname">
+														<?php $username = get_username_demandeur($annonce['demandeur']);
+																echo $username ?></span></div>
+														<div class="budget"> Budget : <b>
+														<?php echo $annonce['prix'] ?> €</b> </div>
+														<div class="duration"> Lieu : <b>
+														<?php echo $annonce['lieu'] ?> </b> </div>
+													</div>
+                                                </a>
                                             </div>
-                                        </a>
-                                    </div>
-                                    <div id="listannonce" class="row">
-                                        <a href="#">
-                                            <div class="col-xs-3 col-sm-2 text-center no-padding"> </div>
-                                            <div class="col-xs-9 col-sm-10">
-                                                <h4 class="title">
-                                            Location Scanner                                        </h4>
-                                                <div class="username"> <span class="capitalize firstname">Jean-pascal</span> - posté aujourd'hui, à 09:59 </div>
-                                                <div class="budget"> Budget : <b>
-                                            10€                                            </b> </div>
-                                                <div class="duration"> Durée : <b>1 jour</b> </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

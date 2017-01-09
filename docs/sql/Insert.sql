@@ -20,3 +20,6 @@ INSERT INTO UtilisateurService VALUES
 INSERT INTO Annonce VALUES
 (1, 'Location kangourou', 9, 'Maubeauge', 2, 'Bonjour, je voudrais louer un kangourou pour un combat de boxe'),
 (2, 'Location voiture', 6, 'Valenciennes', 50, 'Bonjour, je voudrais louer une voiture pour un court trajet');
+
+INSERT INTO AnnonceSauv VALUES
+(1, 2);
