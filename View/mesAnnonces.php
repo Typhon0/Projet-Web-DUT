@@ -26,28 +26,23 @@
 <body>
     <?php require("menu.php");?>
         <!-- Page Content -->
-<<<<<<< Updated upstream
 		<?php
 		include('../Model/fonctions_annonces.php');
 		include('../Model/config.php');
-=======
-        <?php
-		include_once('../Model/fonctions_annonces.php');
->>>>>>> Stashed changes
 		?>
-            <div class="container">
-                <?php require("menuProfile.php");?>
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Annonces postées</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Annonce enregistrées</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
-                            <h3>Annonces postées</h3>
-                            <div id="listannonceP" class="row">
+        <div class="container">
+            <?php require("menuProfile.php");?>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Annonces postées</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Annonce enregistrées</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h3>Annonces postées</h3>
+                        <div id="listannonceP" class="row">
+                            <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    <div class="col-xs-12">
-                                        <?php $annoncesP = get_annonces_postees();
+                                    <?php $annoncesP = get_annonces_postees();
                                     foreach ($annoncesP as $annonce) { ?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
@@ -55,43 +50,35 @@
                                                         <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
                                                     </div>
                                                     <div class="col-xs-9 col-sm-10">
-                                                        <h4 class="title">
+														<h4 class="title">
 														<?php echo $annonce['titre'] ?>                                       </h4>
-                                                        <div class="username"> Type de service : <span class="capitalize firstname">
+														<div class="username"> Type de service : <span class="capitalize firstname">
 														<?php $service = get_nomService($annonce['service']);
 																echo $service ?></span></div>
-                                                        <div class="username"> Utilisateur : <span class="capitalize firstname">
+														<div class="username"> Utilisateur : <span class="capitalize firstname">
 														<?php $username = get_username_demandeur($annonce['demandeur']);
 																echo $username ?></span></div>
-                                                        <div class="budget"> Budget : <b>
+														<div class="budget"> Budget : <b>
 														<?php echo $annonce['prix'] ?> €</b> </div>
-                                                        <div class="duration"> Lieu : <b>
+														<div class="duration"> Lieu : <b>
 														<?php echo $annonce['lieu'] ?> </b> </div>
-                                                    </div>
+													</div>
                                                 </a>
                                             </div>
-                                            <?php } ?>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
-                        <div id="menu1" class="tab-pane fade">
-                            <h3>Annonces enregistrées</h3>
-                            <div id="listannonceP" class="row">
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Annonces enregistrées</h3>
+                        <div id="listannonceP" class="row">
+                            <div class="col-xs-12">
                                 <div class="col-xs-12">
-<<<<<<< Updated upstream
                                     <?php $idAnnonces = get_annonces_sauvegardees();
                                     foreach ($idAnnonces as $id) { 		
 										$annonceE = get_full_annonce($id['idAnnonce']);					
 										foreach ($annonceE as $ae) {
-=======
-                                    <div class="col-xs-12">
-                                        <?php $idAnnonces = get_annonces_sauvegardees();
-
-                                    foreach ($idAnnonces as $val) { 
-										$annonce = get_full_annonce($val);
-                                         
->>>>>>> Stashed changes
 									?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
@@ -99,7 +86,6 @@
                                                         <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
                                                     </div>
                                                     <div class="col-xs-9 col-sm-10">
-<<<<<<< Updated upstream
 														<h4 class="title">
 														<?php echo $ae['titre'] ?>                                       </h4>
 														<div class="username"> Type de service : <span class="capitalize firstname">
@@ -117,36 +103,18 @@
                                             </div>
 										<?php } ?>
                                     <?php } ?>
-=======
-                                                        <h4 class="title">
-														<?php echo $annonce['titre'] ?>                                       </h4>
-                                                        <div class="username"> Type de service : <span class="capitalize firstname">
-														<?php $service = get_nomService($annonce['service']);
-																echo $service ?></span></div>
-                                                        <div class="username"> Utilisateur : <span class="capitalize firstname">
-														<?php $username = get_username_demandeur($annonce['demandeur']);
-																echo $username ?></span></div>
-                                                        <div class="budget"> Budget : <b>
-														<?php echo $annonce['prix'] ?> €</b> </div>
-                                                        <div class="duration"> Lieu : <b>
-														<?php echo $annonce['lieu'] ?> </b> </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <?php } ?>
-                                    </div>
->>>>>>> Stashed changes
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>
-            </div>
-            <!-- /.container -->
-            <!-- jQuery -->
-            <script src="../js/jquery.js"></script>
-            <!-- Bootstrap Core JavaScript -->
-            <script src="../js/bootstrap.min.js"></script>
+                </div>
+        </div>
+        </div>
+        <!-- /.container -->
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>
