@@ -26,9 +26,16 @@
 <body>
     <?php require("menu.php");?>
         <!-- Page Content -->
+<<<<<<< Updated upstream
 		<?php
 		include('../Model/fonctions_annonces.php');
 		include('../Model/config.php');
+=======
+        <?php
+		include('../Model/fonctions_annonces.php');
+		include('../Model/config.php');
+
+>>>>>>> Stashed changes
 		?>
         <div class="container">
             <?php require("menuProfile.php");?>
@@ -75,10 +82,20 @@
                         <div id="listannonceP" class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
+<<<<<<< Updated upstream
                                     <?php $idAnnonces = get_annonces_sauvegardees();
                                     foreach ($idAnnonces as $id) { 		
 										$annonceE = get_full_annonce($id['idAnnonce']);					
 										foreach ($annonceE as $ae) {
+=======
+                                    <<<<<<< Updated upstream <?php $idAnnonces=g et_annonces_sauvegardees(); foreach ($idAnnonces as $id) { $annonceE=g et_full_annonce($id[ 'idAnnonce']); foreach ($annonceE as $ae) {=======< div class="col-xs-12">
+                                        <?php $idAnnonces = get_annonces_sauvegardees();
+
+                                    foreach ($idAnnonces as $val) { 
+										$annonce = get_full_annonce($val);
+                                         
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 									?>
                                             <div id="listannonce" class="row">
                                                 <a href="#">
@@ -86,25 +103,51 @@
                                                         <button type="button" class="glyphicon glyphicon-remove btn btn-danger"></button>
                                                     </div>
                                                     <div class="col-xs-9 col-sm-10">
+<<<<<<< Updated upstream
 														<h4 class="title">
 														<?php echo $ae['titre'] ?>                                       </h4>
 														<div class="username"> Type de service : <span class="capitalize firstname">
+=======
+                                                        <<<<<<< Updated upstream <h4 class="title">
+                                                            <?php echo $ae['titre'] ?>
+                                                                </h4>
+                                                                <div class="username"> Type de service : <span class="capitalize firstname">
+>>>>>>> Stashed changes
 														<?php $service = get_nomService($ae['service']);
 																echo $service ?></span></div>
-														<div class="username"> Utilisateur : <span class="capitalize firstname">
+                                                                <div class="username"> Utilisateur : <span class="capitalize firstname">
 														<?php $username = get_username_demandeur($ae['demandeur']);
 																echo $username ?></span></div>
-														<div class="budget"> Budget : <b>
+                                                                <div class="budget"> Budget : <b>
 														<?php echo $ae['prix'] ?> €</b> </div>
-														<div class="duration"> Lieu : <b>
+                                                                <div class="duration"> Lieu : <b>
 														<?php echo $ae['lieu'] ?> </b> </div>
-													</div>
+                                                    </div>
                                                 </a>
                                             </div>
+<<<<<<< Updated upstream
 										<?php } ?>
                                     <?php } ?>
+=======
+                                            <?php } ?>
+                                                <?php } ?> =======
+                                                    <h4 class="title">
+														<?php echo $annonce['titre'] ?>                                       </h4>
+                                                    <div class="username"> Type de service : <span class="capitalize firstname">
+														<?php $service = get_nomService($annonce['service']);
+																echo $service ?></span></div>
+                                                    <div class="username"> Utilisateur : <span class="capitalize firstname">
+														<?php $username = get_username_demandeur($annonce['demandeur']);
+																echo $username ?></span></div>
+                                                    <div class="budget"> Budget : <b>
+														<?php echo $annonce['prix'] ?> €</b> </div>
+                                                    <div class="duration"> Lieu : <b>
+														<?php echo $annonce['lieu'] ?> </b> </div>
+>>>>>>> Stashed changes
                                 </div>
+                                </a>
                             </div>
+<<<<<<< Updated upstream
                         </div>
                     </div>
                 </div>
@@ -115,6 +158,20 @@
         <script src="../js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
+=======
+                            <?php } ?>
+                        </div> >>>>>>> Stashed changes </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <!-- /.container -->
+            <!-- jQuery -->
+            <script src="../js/jquery.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../js/bootstrap.min.js"></script>
+>>>>>>> Stashed changes
 </body>
 
 </html>

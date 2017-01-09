@@ -55,7 +55,7 @@ foreach($liste_non_lu as $mess)
 ?>
                                         <div class="tab-pane fade in active" id="home">
                                             <div class="list-group">
-                                                <a href="Lire_Message.php?id=<?php echo $mess['idMessage']; ?>" class="list-group-item"> <span class="glyphicon glyphicon-star-empty">
+                                                <a href="Lire_message.php?id=<?php echo $mess['idMessage']; ?>" class="list-group-item"> <span class="glyphicon glyphicon-star-empty">
 											</span> <span class="name" style="min-width: 120px; display: inline-block;">	
 												<?php echo $mess['emetteur']; ?> 
 											</span> <span class="">
