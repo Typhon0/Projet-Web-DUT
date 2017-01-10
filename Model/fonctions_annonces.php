@@ -2,8 +2,7 @@
 
 
 function verifier_utilisateurs_dispos($service) {
-		include_once('Users.php');
-		global $bdd;
+		include('config.php');
 		$service = (string) $service;
 		
 		$req = $bdd->prepare('SELECT idUtilisateur FROM UtilisateurService WHERE idService=(SELECT idService FROM Service WHERE nom=:service;) AND disponible=true');
@@ -12,8 +11,7 @@ function verifier_utilisateurs_dispos($service) {
 		if($req->num_rows == 0) {
 			return false;
 		}
-		include_once('../Model/Users.php');
-		$usersDispos = $req->fetchAll(PDO::FETCH_CLASS, "Users");
+		$usersDispos = $req->fetchAll();
 		return $usersDispos;
 	}
 	
@@ -32,10 +30,6 @@ function verifier_utilisateurs_dispos($service) {
 		$query = 'INSERT INTO Annonce (demandeur, titre, service, lieu, prix, message) VALUES (?, ?, ?, ?, ?, ?);';
         
 		$stmt = $bdd->prepare($query);
-        
-        
-
-		 
 		$stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 		$stmt->bindValue(2, $titre, PDO::PARAM_STR);
 		$stmt->bindValue(3, $idService, PDO::PARAM_INT);
@@ -95,7 +89,7 @@ function verifier_utilisateurs_dispos($service) {
 	function get_all_annonces() {
 		include('config.php');
 		
-		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce';
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message GROUP BY id DESC FROM Annonce';
 		$stmt = $bdd->prepare($query);
 		$stmt->execute();
 		$lesAnnonces = $stmt->fetchAll();
@@ -106,7 +100,7 @@ function verifier_utilisateurs_dispos($service) {
 		include_once('config.php');
 		include_once('Annonce.php');
 		
-		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce LIMIT ?';
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce GROUP BY idAnnonce DESC LIMIT ?';
 		$stmt = $bdd->prepare($query);
 		$stmt->bindValue(1, $nbAnnonces, PDO::PARAM_INT);
 		$stmt->execute();
