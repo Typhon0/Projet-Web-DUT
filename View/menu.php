@@ -16,7 +16,7 @@
                     <li> <a href="#">Forum</a> </li>
                     <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Informations <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Données médicales</a></li>
+                            <li><a href="http://localhost/Projet-Web-DUT/View/infoMedic.php">Données médicales</a></li>
                             <li><a href="#">Trouver où se soigner</a></li>
                         </ul>
                     </li>
