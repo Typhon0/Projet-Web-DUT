@@ -25,7 +25,7 @@
                     <li><a href="http://localhost/Projet-Web-DUT/View/login.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin">Login</a> </li>
                     <?php }else if($_SESSION['logged']==1){?>
                         <li>
-                            <a href="http://localhost/Projet-Web-DUT/View/Profile.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin"> <b> <p><?php echo $_SESSION['username']?> </p></b> </a> <a href="http://localhost/Projet-Web-DUT/Controler/logout.php" style="padding : 30px 0;margin-right:5px; color:#9d9d9d;" class="pull-right userlogin"> Logout </a> </li>
+                            <a href="http://localhost/Projet-Web-DUT/View/Profile.php" style="padding : 30px 0; color:#9d9d9d;" class="pull-right userlogin"> <b> <p><?php echo $_SESSION['username']?> </p></b> </a> <a href="http://localhost/Projet-Web-DUT/Controler/logout.php" style="padding : 30px 0;margin-right:5px; color:#9d9d9d;" class="pull-right userlogin"> Déconnexion </a> </li>
                         <?php }?>
             </div>
             <!-- /.navbar-collapse -->

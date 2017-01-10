@@ -58,7 +58,7 @@
                                         </p>
                                     </div>
                                     <div class="col-xs-4">
-                                        <input type="checkbox" name="service[]" value=< ?php echo $idServ ?> />
+                                        <input type="checkbox" name="service[]" value= <?php echo $idServ ?> >
                                         <br/> </div>
                                 </div>
                                 <?php } ?>

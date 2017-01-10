@@ -74,21 +74,7 @@
                     <script src="js/jquery.js"></script>
                     <!-- Bootstrap Core JavaScript -->
                     <script src="js/bootstrap.min.js"></script>
-                    <!-- Swipper -->
-                    <script src="js/swiper.min.js"></script>
-                    <!-- Initialize Swiper -->
-                    <script>
-                        var swiper = new Swiper('.swiper-container', {
-                            pagination: '.swiper-pagination'
-                            , paginationClickable: true
-                            , autoplay: 3000
-                            , loop: true
-                            , nextButton: '.swiper-button-next'
-                            , prevButton: '.swiper-button-prev'
-                            , spaceBetween: 30
-                            , effect: 'fade'
-                        });
-                    </script>
+                
     </body>
 
     </html>
