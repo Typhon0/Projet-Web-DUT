@@ -89,7 +89,7 @@ function verifier_utilisateurs_dispos($service) {
 	function get_all_annonces() {
 		include('config.php');
 		
-		$query = 'SELECT demandeur, titre, service, lieu, prix, message GROUP BY id DESC FROM Annonce';
+		$query = 'SELECT demandeur, titre, service, lieu, prix, message FROM Annonce';
 		$stmt = $bdd->prepare($query);
 		$stmt->execute();
 		$lesAnnonces = $stmt->fetchAll();
